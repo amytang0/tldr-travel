@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Tl;dr Travel
+
 ---
 
 #Tl;dr Travel#
