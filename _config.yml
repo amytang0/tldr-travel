@@ -1,0 +1,5 @@
+exclude: [".gitignore", "README.md", "Gemfile", "Gemfile.lock"]
+name: Tl;dr Travel
+markdown: kramdown
+permalink: /guide/:title
+
