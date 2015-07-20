@@ -38,9 +38,9 @@
   var $map = document.getElementById("map-canvas");
 
   //init map
-  var mapLat = getInt($map, "data-lat");
-  var mapLng = getInt($map, "data-lng");
-  var zoom = getInt($map, "data-zoom");
+  var mapLat = getFloat($map, "data-lat");
+  var mapLng = getFloat($map, "data-lng");
+  var zoom = getFloat($map, "data-zoom");
 
   var map = new GMaps({
     div: '#map-canvas',
@@ -66,6 +66,7 @@
   var $routes = $routesMeta.getElementsByClassName("route");
   var $polylines= $routesMeta.getElementsByClassName("polyline");
 
+  //routes
   for (var i = 0; i < $routes.length; i++) {
     (function($route) {
       map.drawRoute({
@@ -82,12 +83,13 @@
     })($routes[i]);
   }
 
+  //polylines, when can't route
   for (var i = 0; i < $polylines.length; i++) {
     (function($line) {
-      var startLat = getInt($line, "data-start-lat");
-      var startLng = getInt($line, "data-start-lng");
-      var endLat = getInt($line, "data-end-lat");
-      var endLng = getInt($line, "data-end-lng");
+      var startLat = getFloat($line, "data-start-lat");
+      var startLng = getFloat($line, "data-start-lng");
+      var endLat = getFloat($line, "data-end-lat");
+      var endLng = getFloat($line, "data-end-lng");
 
       map.drawPolyline({
         path: [
@@ -102,6 +104,42 @@
         }
       });
     })($polylines[i]);
+  }
+
+  var $citiesMeta = document.getElementById("cities-meta");
+  var $cities = $citiesMeta.getElementsByClassName("city");
+  var $links = $citiesMeta.getElementsByClassName("link");
+
+  //cities
+  for (var i = 0; i < $cities.length; i++) {
+    (function($city) {
+      var lat = getFloat($city, "data-lat");
+      var lng = getFloat($city, "data-lng");
+
+      map.addMarker({
+        lat: lat,
+        lng: lng,
+        infoWindow: {
+          content: $city.innerHTML
+        }
+      });
+    })($cities[i]);
+  }
+
+  for (var i = 0; i < $links.length; i++) {
+    (function($link) {
+      var lat = getFloat($link, "data-lat");
+      var lng = getFloat($link, "data-lng");
+      var url = $link.getAttribute("data-url");
+
+      map.addMarker({
+        lat: lat,
+        lng: lng,
+        click: function(e) {
+          window.open(url, '_blank');
+        }
+      });
+    })($links[i]);
   }
 
 })();

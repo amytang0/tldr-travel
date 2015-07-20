@@ -31,6 +31,6 @@ function getColor(i) {
   return colors[i];
 };
 
-function getInt(el, attr) {
+function getFloat(el, attr) {
   return parseFloat(el.getAttribute(attr));
 }
