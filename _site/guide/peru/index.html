@@ -19,10 +19,10 @@
     </head>
 <body>
 
-<h1 id="peru">Peru</h1>
-<p>Data from 2015-07-18 20:00:00 -0400</p>
+<h1>Peru</h1>
+Data from July 2015
 
-<p>Currency: Soles (1 USD ~ 3 soles)</p>
+<p>Currency: Soles (1 USD = ~<span data-currency="PEN" id="currency">3.1</span> soles)</p>
 
 <p>Tipping: 1-2 soles at small restaurants, 10% at fancier</p>
 
@@ -37,7 +37,42 @@ the toilet.</p>
 <p>Tourist Visa: None for US/Canada. Others: 
 <a href="http://www.limaeasy.com/peru-info/peruvian-visa">here</a></p>
 
+<div id="cities-meta">
+</div>
 
+<div id="routes-meta">
+  <div class="route" data-origin="Lima, Peru" data-destination="Ica, Peru">
+    Content 1
+  </div>
+  <div class="route" data-origin="Ica, Peru" data-destination="Arequipa, 
+    Peru">
+    Content 2
+  </div>
+  <div class="route" data-origin="Arequipa, Peru" data-destination="Cusco, 
+    Peru">
+    Content 3
+  </div>
+  <div class="route" data-origin="Cusco, Peru" data-destination="Puno, 
+    Peru">
+    Content 4
+  </div>
+  <div class="polyline" data-start-lat="-13.534999" data-start-lng="-71.966987" data-end-lat="-13.132782" data-end-lng="-72.520423">
+      <h1>Aguas Caliente (Machu Pichhu) &lt;-&gt; Cusco</h1>
+      <p>By <strong>train</strong>: ~$100, 3 hour bus to Ollantaytambo, then 1.5 
+      hour train</p>
+      <p>By <strong>bus</strong>: ~15, 7 hour bus to Hiedroelectrica, then 2 
+  hour walk</p>
+  </div>
+</div>
+
+
+<div id="map-canvas" data-lat="-14.069839" data-lng="-73.029068" data-zoom="6"></div>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWjWoZQhHbd0Nw69SpvOtKW8Po-dyI5-A">
+</script>
+<script type="text/javascript" src="/js/gmaps.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/country.js"></script>
 
   </body>
 

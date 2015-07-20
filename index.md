@@ -13,11 +13,12 @@ on a group of friends' travel experiences.
 
 ##Travel Guides##
 
-{% for guide in site.posts %}
-<li>
-  <a href="{{ guide.url }}">
-    {{ guide.country }}
-  </a>
-</li>
-{% endfor %}
-
+<ul>
+  {% for guide in site.posts %}
+  <li>
+    <a href="{{ guide.url }}">
+      {{ guide.country }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
