@@ -11,3 +11,10 @@ Data from {{ page.date | date: '%B %Y' }}
 
 {{ content }}
 
+<div id="map-canvas" data-lat="{{ page.lat }}" data-lng="{{ page.lng }}" data-zoom="{{ page.zoom }}"></div>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWjWoZQhHbd0Nw69SpvOtKW8Po-dyI5-A">
+</script>
+<script type="text/javascript" src="/js/gmaps.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/city.js"></script>
