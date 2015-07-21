@@ -31,7 +31,7 @@ else
   TEMPLATE_FILE = '_city_template.md'
 
   content = File.read(TEMPLATE_FILE)
-  content = content.gsub("CITY", "\"#{city.capitalize}\"").gsub("TITLE", "\"#{city.capitalize}\"").gsub("DATE", date.strftime("%Y-%m-%d %H:%M:%S"))
+  content = content.gsub("COUNTRY", "\"#{country.capitalize}\"").gsub("CITY", "\"#{city.capitalize}\"").gsub("TITLE", "\"#{city.capitalize}\"").gsub("DATE", date.strftime("%Y-%m-%d %H:%M:%S"))
 
   #create folder in guide/country for the city
   Dir.mkdir "guide/#{country}/#{city}"

@@ -1,4 +1,13 @@
 (function() {
+  function nameWithCountry(name) {
+    //countryName global var gotten from html
+    return name + ", " + countryName;
+  }
+
+  function attrWithCountry(el, attr) {
+    return nameWithCountry(el.getAttribute(attr));
+  }
+
   //update currency if haven't fetched it within the past month
   var $currency = document.getElementById("currency");
   var currencyName = $currency.getAttribute("data-currency");
@@ -49,6 +58,44 @@
     zoom: zoom
   });
 
+  var $citiesMeta = document.getElementById("cities-meta");
+  var $cities = $citiesMeta.getElementsByClassName("city");
+  var $links = $citiesMeta.getElementsByClassName("link");
+
+  //cities
+  for (var i = 0; i < $cities.length; i++) {
+    (function($city) {
+      var city = attrWithCountry($city, "data-name");
+
+      getLatLong(city, function(lat, lng) {
+        map.addMarker({
+          lat: lat,
+          lng: lng,
+          infoWindow: {
+            content: $city.innerHTML
+          }
+        });
+      });
+    })($cities[i]);
+  }
+
+  for (var i = 0; i < $links.length; i++) {
+    (function($link) {
+      var url = $link.getAttribute("data-name");
+      var city = nameWithCountry(url);
+
+      getLatLong(city, function(lat, lng) {
+        map.addMarker({
+          lat: lat,
+          lng: lng,
+          click: function(e) {
+            window.open(url, '_blank');
+          }
+        });
+      });
+    })($links[i]);
+  }
+
   //routes
   var infoWindow = new google.maps.InfoWindow({
     content: ""});
@@ -68,10 +115,10 @@
 
   //routes
   for (var i = 0; i < $routes.length; i++) {
-    (function($route) {
+    (function($route, i) {
       map.drawRoute({
-        origin: $route.getAttribute("data-origin"),
-        destination: $route.getAttribute("data-destination"),
+        origin: attrWithCountry($route, "data-origin"),
+        destination: attrWithCountry($route, "data-destination"),
         travelMode: 'driving',
         strokeColor: getColor(i),
         strokeOpacity: OPACITY,
@@ -80,66 +127,34 @@
           openWindow(e.latLng, $route.innerHTML);
         }
       });
-    })($routes[i]);
+    })($routes[i], i);
   }
 
   //polylines, when can't route
   for (var i = 0; i < $polylines.length; i++) {
-    (function($line) {
-      var startLat = getFloat($line, "data-start-lat");
-      var startLng = getFloat($line, "data-start-lng");
-      var endLat = getFloat($line, "data-end-lat");
-      var endLng = getFloat($line, "data-end-lng");
+    (function($line, i) {
+      var origin = attrWithCountry($line, "data-origin");
+      var destination = attrWithCountry($line, "data-destination");
 
-      map.drawPolyline({
-        path: [
-          [startLat, startLng],
-          [endLat, endLng]
-        ],
-        strokeColor: getColor(i + $routes.length),
-        strokeOpacity: OPACITY,
-        strokeWeight: WEIGHT,
-        click: function(e) {
-          openWindow(e.latLng, $line.innerHTML);
-        }
+      getLatLong(origin, function(startLat, startLng) {
+        getLatLong(destination, function(endLat, endLng) {
+          map.drawPolyline({
+            path: [
+              [startLat, startLng],
+              [endLat, endLng]
+            ],
+            strokeColor: getColor(i + $routes.length),
+            strokeOpacity: OPACITY,
+            strokeWeight: WEIGHT,
+            click: function(e) {
+              openWindow(e.latLng, $line.innerHTML);
+            }
+          });
+        });
       });
-    })($polylines[i]);
+
+    })($polylines[i], i);
   }
 
-  var $citiesMeta = document.getElementById("cities-meta");
-  var $cities = $citiesMeta.getElementsByClassName("city");
-  var $links = $citiesMeta.getElementsByClassName("link");
-
-  //cities
-  for (var i = 0; i < $cities.length; i++) {
-    (function($city) {
-      var lat = getFloat($city, "data-lat");
-      var lng = getFloat($city, "data-lng");
-
-      map.addMarker({
-        lat: lat,
-        lng: lng,
-        infoWindow: {
-          content: $city.innerHTML
-        }
-      });
-    })($cities[i]);
-  }
-
-  for (var i = 0; i < $links.length; i++) {
-    (function($link) {
-      var lat = getFloat($link, "data-lat");
-      var lng = getFloat($link, "data-lng");
-      var url = $link.getAttribute("data-url");
-
-      map.addMarker({
-        lat: lat,
-        lng: lng,
-        click: function(e) {
-          window.open(url, '_blank');
-        }
-      });
-    })($links[i]);
-  }
 
 })();

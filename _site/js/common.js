@@ -34,3 +34,18 @@ function getColor(i) {
 function getFloat(el, attr) {
   return parseFloat(el.getAttribute(attr));
 }
+
+//trigger callback if can get lat long for a place name. otherwise gracefully fail
+function getLatLong(place, callback) {
+  GMaps.geocode({
+    address: place,
+    callback: function(results, status) {
+      if (status == "OK") {
+        var latlng = results[0].geometry.location;
+        callback(latlng.lat(), latlng.lng());
+      } else {
+        console.log("Didn't find a match for " + place);
+      }
+    }
+  })
+}

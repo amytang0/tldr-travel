@@ -32,14 +32,12 @@ Tourist Visa:
 <!-- meta data for populating map with data on the cities -->
 <div id="cities-meta">
 <!-- when city marker just needs an info window to explain stuff about it -->
-<div class="city" data-lat="LATITUDE" data-lng="LONGITUDE">
+<div class="city" data-name="CITY NAME">
 INFO ON CITY
 </div>
 
 <!-- when clicking marker should pop up its own city guide -->
-<div class="link" data-lat="LATITUDE" data-lng="LONGITUDE" data-url="CITY NAME">
-CITY NAME
-</div>
+<div class="link" data-name="CITY NAME"></div>
 </div>
 
 <!-- meta data for populating map with data on the routes -->
@@ -50,8 +48,7 @@ INFO ON ROUTE
 </div>
 
 <!-- when route can't be drawn by google maps -->
-<div class="polyline" data-start-lat="LATITUDE" data-start-lng="LONGITUDE" 
-      data-end-lat="LATITUDE" data-end-lng="LONGITUDE">
+<div class="polyline" data-origin="CITY NAME" data-destination="CITY NAME">
 INFO ON ROUTE
 </div>
 </div>
