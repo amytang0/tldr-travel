@@ -20,7 +20,7 @@ Do:
 {::options parse_block_html="true" /}
 
 <div id="places-meta">
-<div class="place" data-type="history landmark" data-price="1" 
+<div class="place" data-type="sightseeing" data-price="1" 
 data-link="http://www.tripadvisor.ca/Attraction_Review-g294316-d311625-Reviews-Plaza_de_Armas_Plaza_Mayor-Lima_Lima_Region.html" 
 data-latlng="-12.046122, -77.030703">
 #Plaza de Armas#
@@ -28,7 +28,7 @@ data-latlng="-12.046122, -77.030703">
 Historical central plaza
 </div>
 
-<div class="place" data-type="history landmark" data-price="1" 
+<div class="place" data-type="sightseeing" data-price="1" 
 data-link="http://www.tripadvisor.ca/Attraction_Review-g294316-d311638-Reviews-Iglesia_y_Convento_de_San_Francisco-Lima_Lima_Region.html" 
 data-name="Museo del Convento de San Francisco de Asis de Lima">
 #Iglesia y Convento de San Francisco#
@@ -52,7 +52,7 @@ data-name="malabar">
 Fancy restaurant with local flavored inspirations - ~$40
 </div>
 
-<div class="place" data-type="shopplaceg" data-price="1" 
+<div class="place" data-type="shopping" data-price="1" 
 data-link="http://www.tripadvisor.ca/Attraction_Review-g294316-d596436-Reviews-Shopping_Center_Larcomar_Centro_Comercial_Larcomar-Lima_Lima_Region.html" 
 data-name="larcomar">
 #Shopping Center Larcomar#
@@ -69,16 +69,16 @@ Miraflores is the nicer area of Lima. Park has stray cats all over and is lively
 with locals at night - dancing, singing, etc.
 </div>
 
-<div class="place" data-type="food" data-price="3" 
+<div class="place" data-type="food" data-price="4" 
 data-link="http://www.tripadvisor.ca/Attraction_Review-g294316-d2335215-Reviews-SkyKitchen_Peruvian_Cooking_Class-Lima_Lima_Region.html" 
 data-name="skykitchen">
 #Sky Kitchen Cooking Class#
 
-Learn local cuisines while also learning lots about the history and having tons 
+Learn local cuisines while also learning lots about the sightseeing and having tons 
 of fun
 </div>
 
-<div class="place" data-type="history landmark" data-price="2" 
+<div class="place" data-type="sightseeing" data-price="2" 
 data-link="http://www.tripadvisor.ca/Attraction_Review-g294316-d2441173-Reviews-Parque_Kennedy_Parque_Central_de_Miraflores-Lima_Lima_Region.html" 
 data-name="huaca pucclana">
 #Huaca Pucllana#

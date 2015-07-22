@@ -28,6 +28,7 @@
   for (var i = 0; i < $places.length; i++) {
     (function($place) {
       var name = $place.getAttribute("data-name");
+      var type = $place.getAttribute("data-type");
       var place;
 
       if (name !== null) {
@@ -35,6 +36,8 @@
       } else {
         place = $place.getAttribute("data-latlng");
       }
+
+      //TODO: change color of marker based on type
 
       getLatLong(place, function(lat, lng) {
         map.addMarker({
