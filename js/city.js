@@ -1,4 +1,5 @@
 var placeObjs = [];
+var onlyFaves = false;
 
 (function() {
   function nameWithCity(name) {
@@ -35,26 +36,82 @@ var placeObjs = [];
     });
   }
 
-  function addMarkers(markers) {
-    for (var i = 0; i < markers.length; i++) {
-      if (markers[i].show) {
-        addMarker(markers[i]);
+  function repopulateMarkers() {
+    map.removeMarkers();
+
+    for (var i = 0; i < placeObjs.length; i++) {
+      if (placeObjs[i].show) {
+        if (onlyFaves === false || (onlyFaves && placeObjs[i].favorite)) {
+          addMarker(placeObjs[i]);
+        }
       }
     }
   }
 
+  function create(elType, className, parentEl) {
+    var el = document.createElement(elType);
+    el.className = className;
+    parentEl.appendChild(el);
+
+    return el;
+  }
+
+
   function addToList(place) {
-    var listItem = document.createElement('div');
-    listItem.className = "list-item";
-    listItem.innerHTML = place.content;
-    $list.appendChild(listItem);
+    var $listItem = document.createElement('div');
+    $listItem.className = "list-item";
+
+    var $info = create('div', "info", $listItem);
+    $info.innerHTML = place.content;
+
+    var $cancel = create('button', "cancel", $listItem);
+    $cancel.innerHTML = "×";
+    $cancel.addEventListener("click", function() {
+      $listItem.style.display = "none";
+      place.show = false;
+
+      repopulateMarkers();
+    });
+
+    var $favorite = create('input', "favorite", $listItem);
+    $favorite.setAttribute("type", "checkbox");
+    $favorite.addEventListener("click", function() {
+      if ($favorite.checked) {
+        place.favorite = true;
+      } else {
+        place.favorite = false;
+      }
+
+      if (onlyFaves) {
+        repopulateMarkers();
+      }
+    });
+
+    $list.appendChild($listItem);
   }
 
   var $placesMeta = document.getElementById("places-meta");
   var $places = $placesMeta.getElementsByClassName("place");
 
+  if ($places.length > 0) {
+    //add advanced options
+    var $advanced = document.getElementById("advanced-options");
+
+    var $seeFaves = create('input', "see-faves", $advanced);
+    $seeFaves.setAttribute("type", "checkbox");
+    $seeFaves.addEventListener("click", function() {
+      if ($seeFaves.checked) {
+        onlyFaves = true;
+      } else {
+        onlyFaves = false;
+      }
+
+      repopulateMarkers();
+    });
+  }
+
   for (var i = 0; i < $places.length; i++) {
-    (function($place) {
+    (function($place, i) {
       var name = $place.getAttribute("data-name");
       var type = $place.getAttribute("data-type");
       var link = $place.getAttribute("data-link");
@@ -77,14 +134,16 @@ var placeObjs = [];
           type: type,
           link: link,
           content: $place.innerHTML,
-          show: true
+          index: i,
+          show: true,
+          favorite: false
         };
 
         placeObjs.push(placeObj);
         addMarker(placeObj);
         addToList(placeObj);
       });
-    })($places[i]);
+    })($places[i], i);
   }
 
 })();

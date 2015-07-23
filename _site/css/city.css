@@ -1,0 +1,35 @@
+#places-meta {
+  display: none;
+}
+
+#places-list {
+  margin: 10px 25px;
+}
+
+.list-item {
+  position: relative;
+  border: 1px solid #000;
+}
+
+.list-item .info {
+  padding: 5px;
+  margin-left: 25px;
+}
+
+.list-item .info h1 {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.list-item .cancel {
+  padding: 4px;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
+
+.list-item .favorite {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}

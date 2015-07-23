@@ -3,6 +3,7 @@ layout: default
 
 ---
 
+  <link rel="stylesheet" href="/css/city.css">
 </head>
 <body>
 
@@ -11,6 +12,7 @@ Data from {{ page.date | date: '%B %Y' }}
 
 {{ content }}
 
+<div id="advanced-options"></div>
 <div id="places-list"></div>
 <div id="map-canvas" data-lat="{{ page.lat }}" data-lng="{{ page.lng }}" data-zoom="{{ page.zoom }}"></div>
 
