@@ -46,6 +46,10 @@ function getFloat(el, attr) {
   return parseFloat(el.getAttribute(attr));
 }
 
+function getInt(el, attr) {
+  return parseInt(el.getAttribute(attr), 10);
+}
+
 //trigger callback if can get lat long for a place name. otherwise gracefully fail
 function getLatLong(place, callback) {
   GMaps.geocode({

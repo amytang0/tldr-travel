@@ -22,7 +22,7 @@ a {
   height: 500px;
 }
 
-#routes-meta, #cities-meta {
+#routes-meta, #cities-meta, #places-meta {
   display: none;
 }
 
