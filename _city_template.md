@@ -28,13 +28,13 @@ INFO ON PLACE
 
 <!-- TYPES
 
-  "sightseeing": historical landmarks, touristy things
-  "food": restaurants and food experiences
-  "shopping": cool shops
-  "nature": parks, hikes, nice scenery
-  "nightlife": clubs, bars
-  "experience": cool things to try at least once
-  "other": misc
+  sightseeing: historical landmarks, touristy things
+  food: restaurants and food experiences
+  shopping: cool shops
+  nature: parks, hikes, nice scenery
+  nightlife: clubs, bars
+  experience: cool things to try at least once
+  other: misc
 
 -->
 

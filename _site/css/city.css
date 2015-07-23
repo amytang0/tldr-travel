@@ -33,3 +33,7 @@
   right: 5px;
   top: 5px;
 }
+
+#options, #advanced-options {
+  display: none;
+}

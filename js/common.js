@@ -16,15 +16,37 @@ var COLORS = [
   "#9edae5"
 ];
 
-var TYPE_COLORS = {
-  "sightseeing": "red", //historical landmarks, touristy things
-  "food": "brown", //restaurants and food experiences
-  "shopping": "blue", //cool shops
-  "nature": "green", //parks, hikes, nice scenery
-  "nightlife": "purple", //clubs, bars
-  "experience": "black", //cool things to try at least once
-  "other": "orange" //misc
-}
+//object keys have to maintain same as values from city.html layout's checkboxes
+var TYPE_INFO = {
+  sightseeing: {
+    color: "red",
+    description: "historical landmarks, touristy things"
+  },
+  food: {
+    color: "brown",
+    description: "restaurants and food experiences"
+  },
+  shopping: {
+    color: "blue",
+    description: "cool shops"
+  },
+  nature: {
+    color: "green",
+    description: "parks, hikes, nice scenery"
+  },
+  nightlife: {
+    color: "purple",
+    description: "clubs, bars"
+  },
+  experience: {
+    color: "black",
+    description: "cool things to try at least once"
+  },
+  other: {
+    color: "orange",
+    description: "miscellaneous other things"
+  }
+};
 
 function callAjax(url, callback){
     var xmlhttp;
@@ -63,4 +85,20 @@ function getLatLong(place, callback) {
       }
     }
   })
+}
+
+function createEl(elType, className, parentEl) {
+  var el = document.createElement(elType);
+  el.className = className;
+  parentEl.appendChild(el);
+
+  return el;
+}
+
+function show(el) {
+  el.style.display = "block";
+}
+
+function hide(el) {
+  el.style.display = "none";
 }

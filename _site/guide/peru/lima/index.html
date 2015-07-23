@@ -84,7 +84,26 @@ of fun</p>
 </div>
 
 
-<div id="advanced-options"></div>
+<div id="options">
+  See only favorites: <input type="checkbox" id="see-faves" />
+  Advanced options: <input type="checkbox" id="advanced-toggle" />
+  <div id="advanced-options">
+    <p>Sort by:</p>
+    <select>
+      <option value="type" selected="selected">Category (alphabetical)</option>
+      <option value="location">Location (west to east, north to south)</option>
+      <option value="price">Price (lowest first)</option>
+    </select>
+    <p>Filter categories:</p>
+     Sightseeing: <input checked="checked" type="checkbox" class="type-check" value="sightseeing" />
+     Food: <input checked="checked" type="checkbox" class="type-check" value="food" />
+     Shopping: <input checked="checked" type="checkbox" class="type-check" value="shopping" />
+     Nature: <input checked="checked" type="checkbox" class="type-check" value="nature" />
+     Night Life: <input checked="checked" type="checkbox" class="type-check" value="nightlife" />
+     Experience: <input checked="checked" type="checkbox" class="type-check" value="experience" />
+     Other: <input checked="checked" type="checkbox" class="type-check" value="other" />
+  </div>
+</div>
 <div id="places-list"></div>
 <div id="map-canvas" data-lat="-12.084553" data-lng="-77.050936" data-zoom="12"></div>
 
