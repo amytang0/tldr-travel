@@ -58,6 +58,18 @@
     zoom: zoom
   });
 
+  var infoWindow = new google.maps.InfoWindow({
+    content: ""});
+  var WEIGHT = 6;
+  var OPACITY = 0.6;
+
+  function openWindow(latLng, content) {
+    infoWindow.close();
+    infoWindow.setPosition(latLng);
+    infoWindow.setContent(content);
+    infoWindow.open(map.map);
+  };
+
   var $citiesMeta = document.getElementById("cities-meta");
   var $cities = $citiesMeta.getElementsByClassName("city");
   var $links = $citiesMeta.getElementsByClassName("link");
@@ -71,8 +83,8 @@
         map.addMarker({
           lat: lat,
           lng: lng,
-          infoWindow: {
-            content: $city.innerHTML
+          click: function(e) {
+            openWindow({lat: lat + 0.7, lng: lng}, $city.innerHTML);
           }
         });
       });
@@ -84,30 +96,19 @@
       var url = $link.getAttribute("data-name");
       var city = nameWithCountry(url);
 
+      //TODO: color code the marker differently for links
       getLatLong(city, function(lat, lng) {
         map.addMarker({
           lat: lat,
           lng: lng,
+          //TODO: open in a modal?
           click: function(e) {
-            window.open(url, '_blank');
+            window.open(url, "_self");
           }
         });
       });
     })($links[i]);
   }
-
-  //routes
-  var infoWindow = new google.maps.InfoWindow({
-    content: ""});
-  var WEIGHT = 6;
-  var OPACITY = 0.6;
-
-  function openWindow(latLng, content) {
-    infoWindow.close();
-    infoWindow.setPosition(latLng);
-    infoWindow.setContent(content);
-    infoWindow.open(map.map);
-  };
 
   var $routesMeta = document.getElementById("routes-meta");
   var $routes = $routesMeta.getElementsByClassName("route");

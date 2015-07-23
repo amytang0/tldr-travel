@@ -46,6 +46,12 @@
   top: 5px;
 }
 
+.list-item .favorite:before {
+  content: "Favorite: ";
+  position: absolute;
+  right: 16px;
+}
+
 #options, #advanced-options {
   display: none;
 }
