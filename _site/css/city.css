@@ -19,6 +19,10 @@
   border: 1px solid #000;
 }
 
+.list-item.selected-item {
+  border: 1px solid red;
+}
+
 .list-item .info {
   padding: 5px;
   margin-left: 25px;
@@ -46,7 +50,7 @@
   display: none;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 480px) {
   #map-canvas, #places-list {
     width: 90%;
     margin: auto;

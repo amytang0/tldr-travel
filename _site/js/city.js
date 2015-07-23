@@ -26,12 +26,29 @@
     zoom: zoom
   });
 
+  function selectItem(el) {
+    var prevSelected = document.getElementsByClassName("selected-item");
+
+    for (var i = 0; i < prevSelected.length; i++) {
+      prevSelected[i].className = prevSelected[i].className.replace("selected-item", "");
+    }
+
+    el.className += " selected-item";
+    //scroll pane to match when fits on screen with map
+    if (window.innerWidth > 480) {
+      el.scrollIntoView();
+    }
+  }
+
   function addMarker(m) {
     map.addMarker({
       lat: m.lat,
       lng: m.lng,
       infoWindow: {
         content: m.content
+      },
+      click: function() {
+        selectItem(m.$el);
       }
     });
   }
@@ -51,14 +68,15 @@
     }
   }
 
-  function repopulateMarkers() {
+  function repopulateItems() {
     map.removeMarkers();
 
     for (var i = 0; i < placeObjs.length; i++) {
-      if (placeObjs[i].show) {
-        if (onlyFaves === false || (onlyFaves && placeObjs[i].favorite)) {
-          addMarker(placeObjs[i]);
-        }
+      if (placeObjs[i].show && (onlyFaves === false || (onlyFaves && placeObjs[i].favorite))) {
+        addMarker(placeObjs[i]);
+        show(placeObjs[i].$el);
+      } else {
+        hide(placeObjs[i].$el);
       }
     }
   }
@@ -71,10 +89,10 @@
     $info.innerHTML = place.content;
 
     var $price = createEl("div", "price", $info);
-    $price.innerHTML = place.price;
+    $price.innerHTML = "price category: " + place.price;
 
     var $type = createEl("div", "type", $info);
-    $type.innerHTML = place.type;
+    $type.innerHTML = "type: " + place.type;
 
     var $link = createEl("a", "link", $info);
     $link.innerHTML = "link";
@@ -87,7 +105,7 @@
       hide($listItem);
       place.show = false;
 
-      repopulateMarkers();
+      repopulateItems();
     });
 
     var $favorite = createEl('input', "favorite", $listItem);
@@ -100,7 +118,7 @@
       }
 
       if (onlyFaves) {
-        repopulateMarkers();
+        repopulateItems();
       }
     });
 
@@ -124,7 +142,7 @@
         onlyFaves = false;
       }
 
-      repopulateMarkers();
+      repopulateItems();
     });
 
     var $advancedToggle = document.getElementById("advanced-toggle");
@@ -152,7 +170,7 @@
             toggleType($filter.value, false);
           }
 
-          repopulateMarkers();
+          repopulateItems();
         });
       })($filters[i]);
     }
