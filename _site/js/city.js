@@ -59,7 +59,7 @@
   });
 
   function selectItem(el) {
-    var prevSelected = document.getElementsByClassName("selected-item");
+    var prevSelected = $list.getElementsByClassName("selected-item");
 
     for (var i = 0; i < prevSelected.length; i++) {
       prevSelected[i].className = prevSelected[i].className.replace("selected-item", "");
@@ -87,16 +87,12 @@
   }
 
   //hide and show the markers and items on list by type
-  function toggleType(type, showBool) {
+  function toggleAttr(attr, value, showBool) {
     for (var i = 0; i < placeObjs.length; i++) {
-      if (placeObjs[i].type === type) {
+      if (placeObjs[i][attr] === value) {
         placeObjs[i].show = showBool;
 
-        if (showBool) {
-          show(placeObjs[i].$el);
-        } else {
-          hide(placeObjs[i].$el);
-        }
+        toggle(placeObjs[i].$el, showBool);
       }
     }
   }
@@ -162,53 +158,7 @@
   var $placesMeta = document.getElementById("places-meta");
   var $places = $placesMeta.getElementsByClassName("place");
 
-  if ($places.length > 0) {
-    //add options
-    var $options = document.getElementById("options");
-    show($options);
-
-    var $seeFaves = document.getElementById("see-faves");
-    $seeFaves.addEventListener("click", function() {
-      if ($seeFaves.checked) {
-        onlyFaves = true;
-      } else {
-        onlyFaves = false;
-      }
-
-      repopulateItems();
-    });
-
-    var $advancedToggle = document.getElementById("advanced-toggle");
-    var $advancedOptions = document.getElementById("advanced-options");
-    $advancedToggle.addEventListener("click", function() {
-      if ($advancedToggle.checked) {
-        show($advancedOptions);
-      } else {
-        hide($advancedOptions);
-      }
-    });
-
-    //TODO: event listener on sort
-    //TODO: implement sorts
-    //TODO: default sort by category
-
-    //click to filter down categories
-    var $filters = document.getElementsByClassName("type-check");
-    for (var i = 0; i < $filters.length; i++) {
-      (function($filter) {
-        $filter.addEventListener("click", function() {
-          if ($filter.checked) {
-            toggleType($filter.value, true);
-          } else {
-            toggleType($filter.value, false);
-          }
-
-          repopulateItems();
-        });
-      })($filters[i]);
-    }
-  }
-
+  //populate places
   for (var i = 0; i < $places.length; i++) {
     (function($place, i) {
       var name = $place.getAttribute("data-name");
@@ -238,10 +188,105 @@
         };
 
         placeObjs.push(placeObj);
+
         addMarker(placeObj);
         addToList(placeObj);
       });
     })($places[i], i);
+  }
+
+  if ($places.length > 0) {
+    //add options
+    var $options = document.getElementById("options");
+    show($options);
+
+    var $seeFaves = document.getElementById("see-faves");
+    $seeFaves.addEventListener("click", function() {
+      if ($seeFaves.checked) {
+        onlyFaves = true;
+      } else {
+        onlyFaves = false;
+      }
+
+      repopulateItems();
+    });
+
+    var $advancedToggle = document.getElementById("advanced-toggle");
+    var $advancedOptions = document.getElementById("advanced-options");
+    $advancedToggle.addEventListener("click", function() {
+      if ($advancedToggle.checked) {
+        show($advancedOptions);
+      } else {
+        hide($advancedOptions);
+      }
+    });
+
+    //TODO: optimize sorts
+    function sortBy(sort) {
+      $list.innerHTML = "";
+
+      if (sort === "type") {
+        for (var type in TYPE_INFO) {
+          if (TYPE_INFO.hasOwnProperty(type)) {
+            for (var i = 0; i < placeObjs.length; i++) {
+              if (placeObjs[i].type === type) {
+                addToList(placeObjs[i]);
+              }
+            }
+          }
+        }
+        //TODO: implement
+      } else if (sort === "location") {
+        for (var price = 1; price <= 4; price++) {
+          for (var i = 0; i < placeObjs.length; i++) {
+            if (placeObjs[i].price === price) {
+              addToList(placeObjs[i]);
+            }
+          }
+        }
+
+      } else if (sort === "price") {
+        for (var price = 1; price <= 4; price++) {
+          for (var i = 0; i < placeObjs.length; i++) {
+            if (placeObjs[i].price === price) {
+              addToList(placeObjs[i]);
+            }
+          }
+        }
+      }
+    }
+
+    var $sort = document.getElementById("sort");
+    $sort.onchange = function() {
+      sortBy($sort.options[$sort.selectedIndex].value);
+    };
+
+    //TODO: get initial state to be sorted
+    //sortBy("type");
+
+    //click to filter down categories
+    var $filters = $advancedOptions.getElementsByClassName("type-check");
+    for (var i = 0; i < $filters.length; i++) {
+      (function($filter) {
+        $filter.addEventListener("click", function() {
+          toggleAttr("type", $filter.value, $filter.checked);
+
+          repopulateItems();
+        });
+      })($filters[i]);
+    }
+
+    //click to filter down prices
+    var $prices = $advancedOptions.getElementsByClassName("price-check");
+    for (var i = 0; i < $prices.length; i++) {
+      (function($price) {
+        $price.addEventListener("click", function() {
+          toggleAttr("price", parseInt($price.value, 10), $price.checked);
+
+          repopulateItems();
+        });
+      })($prices[i]);
+    }
   }
 
 })();

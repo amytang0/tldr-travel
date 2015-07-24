@@ -41,7 +41,7 @@
   <label for="advanced-toggle">Sort and filter:</label> <input type="checkbox" id="advanced-toggle" />
   <div id="advanced-options">
     <p>Sort by:</p>
-    <select>
+    <select id="sort">
       <option value="type" selected="selected">Category (alphabetical)</option>
       <option value="location">Location (west to east, north to south)</option>
       <option value="price">Price (lowest first)</option>
@@ -54,6 +54,12 @@
     <label for="nightlife">Night Life:</label> <input checked="checked" type="checkbox" id="nightlife" class="type-check" value="nightlife" />
     <label for="experience">Experience:</label> <input checked="checked" type="checkbox" id="experience" class="type-check" value="experience" />
     <label for="other">Other:</label> <input checked="checked" type="checkbox" id="other" class="type-check" value="other" />
+
+    <p>Filter price:</p>
+    <label for="price-1"><$10</label> <input checked="checked" type="checkbox" id="price-1" class="price-check" value="1" />
+    <label for="price-2">$11-$30</label> <input checked="checked" type="checkbox" id="price-2" class="price-check" value="2" />
+    <label for="price-3">$31-$60</label> <input checked="checked" type="checkbox" id="price-3" class="price-check" value="3" />
+    <label for="price-4">>$61</label> <input checked="checked" type="checkbox" id="price-4" class="price-check" value="4" />
   </div>
 </div>
 <div id="places-list"></div>

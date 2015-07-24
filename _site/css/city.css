@@ -56,7 +56,7 @@
   display: none;
 }
 
-.type-check {
+.type-check, .price-check {
   margin-right: 8px;
 }
 

@@ -71,6 +71,14 @@ function hide(el) {
   el.style.display = "none";
 }
 
+function toggle(el, bool) {
+  if (bool) {
+    show(el);
+  } else {
+    hide(el);
+  }
+}
+
 //pinColor is hash code without the hashtag
 function pinIcon(pinColor) {
   return new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
