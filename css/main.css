@@ -26,3 +26,11 @@ a {
   font-size: 16px;
   margin-bottom: 4px;
 }
+
+.date {
+  margin-bottom: 10px;
+}
+
+.content p {
+  margin-bottom: 12px;
+}

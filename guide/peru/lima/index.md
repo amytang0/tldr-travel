@@ -15,8 +15,6 @@ on quadrants. Buses have written on them which streets they go down.
 
 Eat: ceviche, cheap street food
 
-Do:
-
 {::options parse_block_html="true" /}
 
 <div id="places-meta">

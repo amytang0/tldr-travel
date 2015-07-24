@@ -10,11 +10,19 @@ layout: default
 <a href="/" class="nav">Home</a>
 
 <h1>{{ page.title }}</h1>
-Data from {{ page.date | date: '%B %Y' }}
+<div class="date">Data from {{ page.date | date: '%B %Y' }}</div>
 
-{{ content }}
+<div class="content">
+  <h2>General Info</h2>
 
-Click on routes for time and cost estimates. Click on cities for more info on them.
+  {{ content }}
+</div>
+
+<div id="full-guides">
+  Cities with full guides:
+</div>
+
+<p>Click on routes for time and cost estimates. Click on cities for more info on them.</p>
 
 <div id="map-canvas" data-lat="{{ page.lat }}" data-lng="{{ page.lng }}" data-zoom="{{ page.zoom }}"></div>
 

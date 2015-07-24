@@ -15,8 +15,6 @@ Getting around:
 
 Eat:
 
-Do:
-
 {::options parse_block_html="true" /}
 
 <div id="places-meta">

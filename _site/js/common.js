@@ -16,38 +16,6 @@ var COLORS = [
   "#9edae5"
 ];
 
-//object keys have to maintain same as values from city.html layout's checkboxes
-var TYPE_INFO = {
-  sightseeing: {
-    color: "red",
-    description: "historical landmarks, touristy things"
-  },
-  food: {
-    color: "brown",
-    description: "restaurants and food experiences"
-  },
-  shopping: {
-    color: "blue",
-    description: "cool shops"
-  },
-  nature: {
-    color: "green",
-    description: "parks, hikes, nice scenery"
-  },
-  nightlife: {
-    color: "purple",
-    description: "clubs, bars"
-  },
-  experience: {
-    color: "black",
-    description: "cool things to try at least once"
-  },
-  other: {
-    color: "orange",
-    description: "miscellaneous other things"
-  }
-};
-
 function callAjax(url, callback){
     var xmlhttp;
     xmlhttp = new XMLHttpRequest();
@@ -101,4 +69,13 @@ function show(el) {
 
 function hide(el) {
   el.style.display = "none";
+}
+
+//pinColor is hash code without the hashtag
+function pinIcon(pinColor) {
+  return new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+        new google.maps.Size(21, 34),
+        new google.maps.Point(0,0),
+        new google.maps.Point(10, 34));
+
 }

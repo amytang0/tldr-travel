@@ -56,6 +56,10 @@
   display: none;
 }
 
+.type-check {
+  margin-right: 8px;
+}
+
 @media only screen and (max-width: 480px) {
   #map-canvas, #places-list {
     width: 90%;

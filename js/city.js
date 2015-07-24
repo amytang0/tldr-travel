@@ -8,6 +8,38 @@
     return nameWithCity(el.getAttribute(attr));
   }
 
+  //object keys have to maintain same as values from city.html layout's checkboxes
+  var TYPE_INFO = {
+    sightseeing: {
+      color: "D11919", //red
+      description: "historical landmarks, touristy things"
+    },
+    food: {
+      color: "FFCC00", //yellow
+      description: "restaurants and food experiences"
+    },
+    shopping: {
+      color: "0066FF", //blue
+      description: "cool shops"
+    },
+    nature: {
+      color: "006600", //green
+      description: "parks, hikes, nice scenery"
+    },
+    nightlife: {
+      color: "7519D1", //purple
+      description: "clubs, bars"
+    },
+    experience: {
+      color: "484748", //grey
+      description: "cool things to try at least once"
+    },
+    other: {
+      color: "E65C00", //orange
+      description: "miscellaneous other things"
+    }
+  };
+
   var $map = document.getElementById("map-canvas");
   var $list = document.getElementById("places-list");
 
@@ -44,6 +76,7 @@
     map.addMarker({
       lat: m.lat,
       lng: m.lng,
+      icon: pinIcon(TYPE_INFO[m.type].color),
       infoWindow: {
         content: m.content
       },
@@ -189,8 +222,6 @@
       } else {
         place = $place.getAttribute("data-latlng");
       }
-
-      //TODO: change color of marker based on type
 
       getLatLong(place, function(lat, lng) {
         var placeObj = {

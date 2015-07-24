@@ -1,3 +1,11 @@
 #routes-meta, #cities-meta {
   display: none;
 }
+
+#full-guides {
+  margin-top: 12px;
+}
+
+#full-guides a {
+  display: block;
+}

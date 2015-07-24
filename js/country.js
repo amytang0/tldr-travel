@@ -73,6 +73,7 @@
   var $citiesMeta = document.getElementById("cities-meta");
   var $cities = $citiesMeta.getElementsByClassName("city");
   var $links = $citiesMeta.getElementsByClassName("link");
+  var $fullGuides = document.getElementById("full-guides");
 
   //cities
   for (var i = 0; i < $cities.length; i++) {
@@ -83,6 +84,7 @@
         map.addMarker({
           lat: lat,
           lng: lng,
+          icon: pinIcon("FE7569"),
           click: function(e) {
             openWindow({lat: lat + 0.7, lng: lng}, $city.innerHTML);
           }
@@ -96,11 +98,15 @@
       var url = $link.getAttribute("data-name");
       var city = nameWithCountry(url);
 
-      //TODO: color code the marker differently for links
+      var linkP = createEl("a", "guide-link", $fullGuides);
+      linkP.innerHTML = url.charAt(0).toUpperCase() + url.slice(1);
+      linkP.setAttribute("href", url);
+
       getLatLong(city, function(lat, lng) {
         map.addMarker({
           lat: lat,
           lng: lng,
+          icon: pinIcon("0660B0"),
           //TODO: open in a modal?
           click: function(e) {
             window.open(url, "_self");
