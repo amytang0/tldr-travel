@@ -9,3 +9,7 @@
 #full-guides a {
   display: block;
 }
+
+#map-info {
+  display: none;
+}

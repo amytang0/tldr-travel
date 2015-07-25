@@ -163,5 +163,7 @@
     })($polylines[i], i);
   }
 
+  //once rest of map loads, show the related info
+  show(document.getElementById("map-info"));
 
 })();

@@ -103,7 +103,7 @@
         show = show && toggledAttrs[placeObjs[i].price];
       }
 
-      placeObjs[i].show = show;
+      placeObjs[i].toggledOn = show;
     }
 
     repopulateItems();
@@ -133,12 +133,13 @@
 
     //show the markers and list items that are to be shown
     for (var i = 0; i < placeObjs.length; i++) {
-      if (placeObjs[i].show && (onlyFaves === false || (onlyFaves && placeObjs[i].favorite))) {
+      if (!placeObjs[i].canceled && placeObjs[i].toggledOn && (onlyFaves === false || (onlyFaves && placeObjs[i].favorite))) {
         addMarker(placeObjs[i]);
         show(placeObjs[i].$el);
       } else {
         hide(placeObjs[i].$el);
-        hiddenItems.push(i);
+        //index doesn't change despite re-ordering of objs
+        hiddenItems.push(placeObjs[i].index);
       }
     }
 
@@ -174,7 +175,7 @@
     $cancel.innerHTML = "×";
     $cancel.addEventListener("click", function() {
       hide($listItem);
-      place.show = false;
+      place.canceled = true;
 
       repopulateItems();
     });
@@ -222,17 +223,25 @@
             price: price,
             content: $place.innerHTML,
             index: i,
-            show: true,
+            canceled: false,
             favorite: false
           };
 
-          placeObjs.push(placeObj);
-
-          addMarker(placeObj);
           addToList(placeObj);
 
+          //TODO: see if obj is in url hide-list
           var n = convertToSingleChar(i);
-          //TODO: if find n in url, then hide, and set show to false
+          var urlParam = getParamByName("list");
+          console.log(n);
+          if (urlParam.indexOf(n) !== -1) {
+            placeObj.toggledOn = false;
+            hide(placeObj.$el);
+          } else {
+            placeObj.toggledOn = true;
+            addMarker(placeObj);
+          }
+
+          placeObjs.push(placeObj);
         });
       })($places[i], i);
     }
@@ -318,12 +327,31 @@
         });
       })($prices[i]);
     }
+
+    var $reset = document.getElementById("reset");
+    $reset.addEventListener("click", function() {
+      for (var i = 0; i < placeObjs.length; i++) {
+        placeObjs[i].toggledOn = true;
+        placeObjs[i].canceled = false;
+      }
+
+      for (var i = 0; i < $filters.length; i++) {
+        $filters[i].checked = true;
+      }
+
+      for (var i = 0; i < $prices.length; i++) {
+        $prices[i].checked = true;
+      }
+
+      repopulateItems();
+    });
   }
 
   initPlaces();
 
   //if there's a list, add event listeners for the options
   if ($places.length > 0) {
+    show($list);
     initOptions();
   }
 

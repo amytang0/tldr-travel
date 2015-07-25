@@ -52,12 +52,20 @@
   right: 16px;
 }
 
-#options, #advanced-options {
+#places-list, #options, #advanced-options {
   display: none;
+}
+
+#options input {
+  margin-right: 15px;
 }
 
 .type-check, .price-check {
   margin-right: 8px;
+}
+
+#reset {
+  padding: 5px;
 }
 
 @media only screen and (max-width: 480px) {
