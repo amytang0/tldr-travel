@@ -112,13 +112,14 @@
   //perma link assumes max of 62 items and that more items on average will be shown than hidden
   //will break if scale to allow anyone to add things to lists
   function convertToSingleChar(n) {
-    if (n >= 10 && n <= 36) {
-      n -= 10;
-      //TODO: convert number to letter
-    } else if (n > 36 && n <= 62) {
-      n -= 36;
-      //TODO: convert number to letter, then upper case
-    } else {
+    //convert number to uppercase letter (A=65, a=97)
+    if (n >= 10 && n < 36) {
+      n += 55;
+      n = String.fromCharCode(n);
+    } else if (n >= 36 && n < 62) {
+      n += 61;
+      n = String.fromCharCode(n);
+    }else if (n >= 62) {
       console.log("index too large for perma linking: " + n);
       n = "";
     }
