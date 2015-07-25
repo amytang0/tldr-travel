@@ -86,28 +86,69 @@
     });
   }
 
-  //hide and show the markers and items on list by type
-  function toggleAttr(attr, value, showBool) {
-    for (var i = 0; i < placeObjs.length; i++) {
-      if (placeObjs[i][attr] === value) {
-        placeObjs[i].show = showBool;
+  //hide and show the markers and items on list by attr
+  var toggledAttrs = {};
 
-        toggle(placeObjs[i].$el, showBool);
+  function toggleAttr(value, showBool) {
+    toggledAttrs[value] = showBool;
+
+    for (var i = 0; i < placeObjs.length; i++) {
+      var show = true;
+
+      if (toggledAttrs[placeObjs[i].type] !== undefined) {
+        show = show && toggledAttrs[placeObjs[i].type];
       }
+
+      if (toggledAttrs[placeObjs[i].price] !== undefined) {
+        show = show && toggledAttrs[placeObjs[i].price];
+      }
+
+      placeObjs[i].show = show;
     }
+
+    repopulateItems();
+  }
+
+  //perma link assumes max of 62 items and that more items on average will be shown than hidden
+  //will break if scale to allow anyone to add things to lists
+  function convertToSingleChar(n) {
+    if (n >= 10 && n <= 36) {
+      n -= 10;
+      //TODO: convert number to letter
+    } else if (n > 36 && n <= 62) {
+      n -= 36;
+      //TODO: convert number to letter, then upper case
+    } else {
+      console.log("index too large for perma linking: " + n);
+      n = "";
+    }
+
+    return n;
   }
 
   function repopulateItems() {
     map.removeMarkers();
+    var hiddenItems = [];
 
+    //show the markers and list items that are to be shown
     for (var i = 0; i < placeObjs.length; i++) {
       if (placeObjs[i].show && (onlyFaves === false || (onlyFaves && placeObjs[i].favorite))) {
         addMarker(placeObjs[i]);
         show(placeObjs[i].$el);
       } else {
         hide(placeObjs[i].$el);
+        hiddenItems.push(i);
       }
     }
+
+    var url = "";
+    for (var i = 0; i < hiddenItems.length; i++) {
+      var n = hiddenItems[i];
+      n = convertToSingleChar(n);
+      url += n;
+    }
+
+    //TODO: set the perma link
   }
 
   function addToList(place) {
@@ -140,11 +181,7 @@
     var $favorite = createEl('input', "favorite", $listItem);
     $favorite.setAttribute("type", "checkbox");
     $favorite.addEventListener("click", function() {
-      if ($favorite.checked) {
-        place.favorite = true;
-      } else {
-        place.favorite = false;
-      }
+      place.favorite = $favorite.checked;
 
       if (onlyFaves) {
         repopulateItems();
@@ -158,55 +195,55 @@
   var $placesMeta = document.getElementById("places-meta");
   var $places = $placesMeta.getElementsByClassName("place");
 
-  //populate places
-  for (var i = 0; i < $places.length; i++) {
-    (function($place, i) {
-      var name = $place.getAttribute("data-name");
-      var type = $place.getAttribute("data-type");
-      var link = $place.getAttribute("data-link");
-      var price = getInt($place, "data-price");
-      var place;
+  //populate list and markers at beginning
+  function initPlaces() {
+    for (var i = 0; i < $places.length; i++) {
+      (function($place, i) {
+        var name = $place.getAttribute("data-name");
+        var type = $place.getAttribute("data-type");
+        var link = $place.getAttribute("data-link");
+        var price = getInt($place, "data-price");
+        var place;
 
-      if (name !== null) {
-        place = nameWithCity(name);
-      } else {
-        place = $place.getAttribute("data-latlng");
-      }
+        if (name !== null) {
+          place = nameWithCity(name);
+        } else {
+          place = $place.getAttribute("data-latlng");
+        }
 
-      getLatLong(place, function(lat, lng) {
-        var placeObj = {
-          lat: lat,
-          lng: lng,
-          name: place,
-          type: type,
-          link: link,
-          price: price,
-          content: $place.innerHTML,
-          index: i,
-          show: true,
-          favorite: false
-        };
+        getLatLong(place, function(lat, lng) {
+          var placeObj = {
+            lat: lat,
+            lng: lng,
+            name: place,
+            type: type,
+            link: link,
+            price: price,
+            content: $place.innerHTML,
+            index: i,
+            show: true,
+            favorite: false
+          };
 
-        placeObjs.push(placeObj);
+          placeObjs.push(placeObj);
 
-        addMarker(placeObj);
-        addToList(placeObj);
-      });
-    })($places[i], i);
+          addMarker(placeObj);
+          addToList(placeObj);
+
+          var n = convertToSingleChar(i);
+          //TODO: if find n in url, then hide, and set show to false
+        });
+      })($places[i], i);
+    }
   }
 
-  if ($places.length > 0) {
-    //add options
+  function initOptions() {
     var $options = document.getElementById("options");
     show($options);
 
     var $seeFaves = document.getElementById("see-faves");
     $seeFaves.addEventListener("click", function() {
-      if ($seeFaves.checked) {
-        onlyFaves = true;
-      } else {
-        onlyFaves = false;
-      }
+      onlyFaves = $seeFaves.checked;
 
       repopulateItems();
     });
@@ -214,11 +251,7 @@
     var $advancedToggle = document.getElementById("advanced-toggle");
     var $advancedOptions = document.getElementById("advanced-options");
     $advancedToggle.addEventListener("click", function() {
-      if ($advancedToggle.checked) {
-        show($advancedOptions);
-      } else {
-        hide($advancedOptions);
-      }
+      toggle($advancedOptions, $advancedToggle.checked);
     });
 
     //TODO: optimize sorts
@@ -235,16 +268,20 @@
             }
           }
         }
-        //TODO: implement
+      //TODO: implement sort
       } else if (sort === "location") {
-        for (var price = 1; price <= 4; price++) {
-          for (var i = 0; i < placeObjs.length; i++) {
-            if (placeObjs[i].price === price) {
-              addToList(placeObjs[i]);
+        var sortedList = [];
+
+        for (var i = 0; i < placeObjs.length; i++) {
+          for (var j = 0; j < placeObjs.length; j++) {
+            if (placeObjs[i].lat > placeObjs[j].lat) {
             }
           }
         }
 
+        for (var i = 0; i < sortedList.length; i++) {
+          addToList(sortedList[i]);
+        }
       } else if (sort === "price") {
         for (var price = 1; price <= 4; price++) {
           for (var i = 0; i < placeObjs.length; i++) {
@@ -261,17 +298,12 @@
       sortBy($sort.options[$sort.selectedIndex].value);
     };
 
-    //TODO: get initial state to be sorted
-    //sortBy("type");
-
     //click to filter down categories
     var $filters = $advancedOptions.getElementsByClassName("type-check");
     for (var i = 0; i < $filters.length; i++) {
       (function($filter) {
         $filter.addEventListener("click", function() {
-          toggleAttr("type", $filter.value, $filter.checked);
-
-          repopulateItems();
+          toggleAttr($filter.value, $filter.checked);
         });
       })($filters[i]);
     }
@@ -281,12 +313,17 @@
     for (var i = 0; i < $prices.length; i++) {
       (function($price) {
         $price.addEventListener("click", function() {
-          toggleAttr("price", parseInt($price.value, 10), $price.checked);
-
-          repopulateItems();
+          toggleAttr(parseInt($price.value, 10), $price.checked);
         });
       })($prices[i]);
     }
+  }
+
+  initPlaces();
+
+  //if there's a list, add event listeners for the options
+  if ($places.length > 0) {
+    initOptions();
   }
 
 })();
