@@ -266,7 +266,7 @@
       toggle($advancedOptions, $advancedToggle.checked);
     });
 
-    //TODO: optimize sorts
+    //TODO: decouple data from rendering
     function sortBy(sort) {
       $list.innerHTML = "";
 
@@ -280,16 +280,17 @@
             }
           }
         }
-      //TODO: implement sort
       } else if (sort === "location") {
-        var sortedList = [];
-
-        for (var i = 0; i < placeObjs.length; i++) {
-          for (var j = 0; j < placeObjs.length; j++) {
-            if (placeObjs[i].lat > placeObjs[j].lat) {
-            }
+        var sortedList = placeObjs.slice();
+        sortedList.sort(function(a, b) {
+          if (b.lat > a.lat) {
+            return 1;
+          } else if (a.lat > b.lat) {
+            return -1;
+          } else {
+            return 0;
           }
-        }
+        });
 
         for (var i = 0; i < sortedList.length; i++) {
           addToList(sortedList[i]);
