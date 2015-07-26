@@ -17,15 +17,16 @@ var COLORS = [
 ];
 
 function callAjax(url, callback){
-    var xmlhttp;
-    xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function(){
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
-            callback(xmlhttp.responseText);
-        }
+  var xmlhttp = new XMLHttpRequest();
+
+  xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+      callback(xmlhttp.responseText);
     }
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
+  }
+
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
 }
 
 function getColor(i) {
@@ -63,8 +64,14 @@ function createEl(elType, className, parentEl) {
   return el;
 }
 
-function show(el) {
-  el.style.display = "block";
+function show(el, display) {
+  var style = "block";
+
+  if (display !== undefined) {
+    style = display;
+  }
+
+  el.style.display = style;
 }
 
 function hide(el) {
@@ -82,15 +89,54 @@ function toggle(el, bool) {
 //pinColor is hash code without the hashtag
 function pinIcon(pinColor) {
   return new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-        new google.maps.Size(21, 34),
-        new google.maps.Point(0,0),
-        new google.maps.Point(10, 34));
+    new google.maps.Size(21, 34),
+    new google.maps.Point(0,0),
+    new google.maps.Point(10, 34));
 
 }
 
-function getParamByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+function getParam(key) {
+  key = key.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  var regex = new RegExp("[\\?&]" + key + "=([^&#]*)");
+  var results = regex.exec(location.search);
+
+  return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function setParam(key, value) {
+  key = encodeURI(key);
+  value = encodeURI(value);
+
+  var kvp = document.location.search.substr(1).split('&');
+  var currentPath = window.location.pathname;
+  var params = "?";
+
+  if (kvp.length === 1 && kvp[0] === "") {
+    params += key + "=" + value;
+  } else {
+    var i = kvp.length;
+
+    while(i--) {
+      var x = kvp[i].split('=');
+
+      if (x[0] === key) {
+        x[1] = value;
+        kvp[i] = x.join('=');
+        break;
+      }
+    }
+
+    if (i < 0) {
+      kvp[kvp.length] = [key, value].join('=');
+    }
+
+    params += kvp.join("&");
+  }
+
+  if (window.history.replaceState) {
+    window.history.replaceState("", "", currentPath + params);
+  } else {
+    //this will reload the page, better to change history if option available
+    document.location.search = params;
+  }
 }

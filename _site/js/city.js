@@ -150,7 +150,8 @@
       url += n;
     }
 
-    //TODO: set the perma link
+    //set permalink for curated list
+    setParam("list", url);
   }
 
   function addToList(place) {
@@ -229,11 +230,12 @@
 
           addToList(placeObj);
 
-          //TODO: see if obj is in url hide-list
+          //if obj is in url hide-list, hide on init
           var n = convertToSingleChar(i);
-          var urlParam = getParamByName("list");
-          console.log(n);
+          var urlParam = getParam("list");
+
           if (urlParam.indexOf(n) !== -1) {
+            console.log(placeObj.link);
             placeObj.toggledOn = false;
             hide(placeObj.$el);
           } else {
@@ -351,7 +353,7 @@
 
   //if there's a list, add event listeners for the options
   if ($places.length > 0) {
-    show($list);
+    show($list, "inline-block");
     initOptions();
   }
 
