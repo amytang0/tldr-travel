@@ -1,6 +1,7 @@
 ---
 layout: city
 title: TITLE
+author: AUTHOR
 date: DATE
 city: CITY
 country: COUNTRY

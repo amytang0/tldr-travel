@@ -1,6 +1,7 @@
 ---
 layout: city
 title: "Cusco"
+author: "Owen Wang"
 date: 2015-07-20 00:00:00
 city: "Cusco"
 country: "Peru"
@@ -9,7 +10,5 @@ lng: -71.981366
 zoom: 14
 
 ---
-
-Do:
 
 Saksaywaman

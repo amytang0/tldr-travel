@@ -1,6 +1,7 @@
 ---
 layout: country
 title: TITLE
+author: AUTHOR
 date: DATE
 country: COUNTRY
 currency: CURRENCY

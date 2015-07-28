@@ -1,6 +1,7 @@
 ---
 layout: city
 title: "Lima"
+author: "Owen Wang"
 date: 2015-07-20 00:00:00
 city: "Lima"
 country: "Peru"
