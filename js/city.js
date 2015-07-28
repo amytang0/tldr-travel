@@ -356,9 +356,23 @@
 
   function initSave() {
     var $save = document.getElementById("save");
+    var $saveBox = document.getElementById("save-box");
+    var $background = document.getElementById("modal-background");
+    var $saveUrl = document.getElementById("save-url");
+    var $closeBox = document.getElementById("close-box");
+
     $save.addEventListener("click", function() {
-      //TODO: open a modal with the current URL in it
+      show($background);
+      show($saveBox);
+      $saveUrl.setAttribute("value", window.location.href);
+      $saveUrl.select();
+
       //TODO: add functionality to export to google maps and maybe also maps.me
+    });
+
+    $closeBox.addEventListener("click", function() {
+      hide($background);
+      hide($saveBox);
     });
   }
 

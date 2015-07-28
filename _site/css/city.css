@@ -68,6 +68,48 @@
   padding: 5px;
 }
 
+#modal-background {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.8;
+  z-index: 2;
+  position: fixed;
+  top: 0;
+}
+
+#save-box {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  height: 100px;
+  width: 400px;
+  margin: -70px 0 0 -220px;
+  background: #fff;
+  opacity: 1;
+  z-index: 3;
+}
+
+#save-url {
+  display: block;
+  width: 95%;
+  padding: 5px;
+}
+
+#close-box {
+  padding: 4px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 480px) {
   #map-canvas, #places-list {
     width: 90%;
