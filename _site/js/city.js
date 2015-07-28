@@ -72,16 +72,16 @@
     }
   }
 
-  function addMarker(m) {
+  function addMarker(placeObj) {
     map.addMarker({
-      lat: m.lat,
-      lng: m.lng,
-      icon: pinIcon(TYPE_INFO[m.type].color),
+      lat: placeObj.lat,
+      lng: placeObj.lng,
+      icon: pinIcon(TYPE_INFO[placeObj.type].color),
       infoWindow: {
-        content: m.content
+        content: placeObj.content
       },
       click: function() {
-        selectItem(m.$el);
+        selectItem(placeObj.$el());
       }
     });
   }
@@ -121,9 +121,9 @@
     for (var i = 0; i < placeObjs.length; i++) {
       if (shouldShow(placeObjs[i])) {
         addMarker(placeObjs[i]);
-        show(placeObjs[i].$el);
+        show(placeObjs[i].$el());
       } else {
-        hide(placeObjs[i].$el);
+        hide(placeObjs[i].$el());
         //index doesn't change despite re-ordering of objs
         hiddenItems.push(placeObjs[i].index);
       }
@@ -135,30 +135,35 @@
     setParam("list", url);
   }
 
+  function placeId(placeObj) {
+    return "place-" + placeObj.index;
+  }
+
   //creates a list item and appends it to $list
-  function addToList(place) {
+  function addToList(placeObj) {
     var $listItem = document.createElement('div');
     $listItem.className = "list-item";
+    $listItem.setAttribute("id", placeId(placeObj));
 
     var $info = createEl('div', "info", $listItem);
-    $info.innerHTML = place.content;
+    $info.innerHTML = placeObj.content;
 
     var $price = createEl("div", "price", $info);
-    $price.innerHTML = "price category: " + place.price;
+    $price.innerHTML = "price category: " + placeObj.price;
 
     var $type = createEl("div", "type", $info);
-    $type.innerHTML = "type: " + place.type;
+    $type.innerHTML = "type: " + placeObj.type;
 
     var $link = createEl("a", "link", $info);
     $link.innerHTML = "link";
-    $link.setAttribute("href", place.link);
+    $link.setAttribute("href", placeObj.link);
     $link.setAttribute("target", "_blank");
 
     var $cancel = createEl('button', "cancel", $listItem);
     $cancel.innerHTML = "×";
     $cancel.addEventListener("click", function() {
       hide($listItem);
-      place.canceled = true;
+      placeObj.canceled = true;
 
       repopulateItems();
     });
@@ -166,7 +171,7 @@
     var $favorite = createEl('input', "favorite", $listItem);
     $favorite.setAttribute("type", "checkbox");
     $favorite.addEventListener("click", function() {
-      place.favorite = $favorite.checked;
+      placeObj.favorite = $favorite.checked;
 
       if (onlyFaves) {
         repopulateItems();
@@ -176,6 +181,12 @@
     $list.appendChild($listItem);
 
     return $listItem;
+  }
+
+  function renderList(itemsList) {
+    for (var i = 0; i < itemsList.length; i++) {
+      addToList(itemsList[i]);
+    }
   }
 
   var $placesMeta = document.getElementById("places-meta");
@@ -209,10 +220,14 @@
             index: i,
             canceled: false,
             toggledOn: true,
-            favorite: false
+            favorite: false,
+            $el: function() {
+              return document.getElementById(placeId(this));
+            }
           };
 
-          placeObj.$el = addToList(placeObj);
+          //TODO: is there a way to wait for all callbacks to occur, then renderList and repopulateItems instead of having this so tightly coupled?
+          addToList(placeObj);
 
           //if obj is in url hide-list, hide on init
           var urlParam = getParam("list");
@@ -220,7 +235,7 @@
 
           if (hideList.indexOf(i.toString()) !== -1) {
             placeObj.initOff = true;
-            hide(placeObj.$el);
+            hide(placeObj.$el());
           } else {
             placeObj.initOff = false;
             addMarker(placeObj);
@@ -253,20 +268,21 @@
   function initSort() {
     function sortBy(sort) {
       $list.innerHTML = "";
+      var sortedList = [];
 
       if (sort === "type") {
         for (var type in TYPE_INFO) {
           if (TYPE_INFO.hasOwnProperty(type)) {
             for (var i = 0; i < placeObjs.length; i++) {
               if (shouldShow(placeObjs[i]) && placeObjs[i].type === type) {
-                placeObjs[i].$el = addToList(placeObjs[i]);
+                sortedList.push(placeObjs[i]);
               }
             }
           }
         }
       } else if (sort === "location") {
-        var sortedList = placeObjs.slice();
-        sortedList.sort(function(a, b) {
+        var sorted = placeObjs.slice();
+        sorted.sort(function(a, b) {
           if (b.lat > a.lat) {
             return 1;
           } else if (a.lat > b.lat) {
@@ -276,25 +292,28 @@
           }
         });
 
-        for (var i = 0; i < sortedList.length; i++) {
-          if (shouldShow(sortedList[i])) {
-            placeObjs[i].$el = addToList(sortedList[i]);
+        for (var i = 0; i < sorted.length; i++) {
+          if (shouldShow(sorted[i])) {
+            sortedList.push(sorted[i]);
           }
         }
       } else if (sort === "price") {
         for (var price = 1; price <= 4; price++) {
           for (var i = 0; i < placeObjs.length; i++) {
             if (shouldShow(placeObjs[i]) && placeObjs[i].price === price) {
-              placeObjs[i].$el = addToList(placeObjs[i]);
+              sortedList.push(placeObjs[i]);
             }
           }
         }
       }
+
+      return sortedList;
     }
 
     var $sort = document.getElementById("sort");
     $sort.onchange = function() {
-      sortBy($sort.options[$sort.selectedIndex].value);
+      var sortedList = sortBy($sort.options[$sort.selectedIndex].value);
+      renderList(sortedList);
     };
   }
 
@@ -343,7 +362,6 @@
     });
   }
 
-  //TODO: move each thing into its own function
   function initOptions() {
     var $options = document.getElementById("options");
     show($options);
