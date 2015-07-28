@@ -10,13 +10,24 @@ html, body {
   height: 100%;
 }
 
+body, input, button {
+  color: rgba(0, 0, 0, 0.7);
+  font-family: Lato, sans-serif;
+}
+
 ul, ol {
   list-style: none;
 }
 
-a {
+a, a:active, a:visited {
   text-decoration: none;
+  color: rgb(0, 155, 255);
 }
+
+a:hover {
+  text-decoration: underline;
+}
+
 
 #map-canvas {
   height: 500px;

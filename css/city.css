@@ -11,12 +11,12 @@
 
 #places-list {
   overflow-y: scroll;
-  border: 1px solid #000;
+  border: 1px solid #676767;
 }
 
 .list-item {
   position: relative;
-  border: 1px solid #000;
+  border: 1px solid #676767;
 }
 
 .list-item.selected-item {
