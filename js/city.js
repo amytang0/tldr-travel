@@ -166,7 +166,7 @@
     $link.setAttribute("href", placeObj.link);
     $link.setAttribute("target", "_blank");
 
-    var $cancel = createEl('button', "cancel", $listItem);
+    var $cancel = createEl('button', "cancel corner-button", $listItem);
     $cancel.innerHTML = "×";
     $cancel.addEventListener("click", function() {
       hide($listItem);
@@ -175,10 +175,16 @@
       repopulateItems();
     });
 
-    var $favorite = createEl('input', "favorite", $listItem);
-    $favorite.setAttribute("type", "checkbox");
+    var $favoriteCheckbox = createEl('input', "favorite-checkbox", $listItem);
+    $favoriteCheckbox.setAttribute("id", "checkbox-" + placeObj.index);
+    $favoriteCheckbox.setAttribute("type", "checkbox");
+
+    var $favorite = createEl('label', "favorite corner-button", $listItem);
+    $favorite.innerHTML = "♡";
+    $favorite.setAttribute("for", "checkbox-" + placeObj.index);
     $favorite.addEventListener("click", function() {
-      placeObj.favorite = $favorite.checked;
+      //a bit unintuitive but click event happens before the actual checkbox changes, so it's the opposite of what it should be
+      placeObj.favorite = !$favoriteCheckbox.checked;
 
       if (onlyFaves) {
         repopulateItems();

@@ -17,15 +17,15 @@
 .list-item {
   position: relative;
   border: 1px solid #676767;
+  padding: 10px;
 }
 
 .list-item.selected-item {
-  border: 1px solid red;
+  border: 2px solid #FFCB45;
 }
 
 .list-item .info {
-  padding: 5px;
-  margin-left: 25px;
+  padding: 0 20px;
 }
 
 .info .price, .info .type, .info .link {
@@ -42,21 +42,43 @@
 
 .list-item .cancel {
   padding: 4px;
-  position: absolute;
   left: 5px;
   top: 5px;
+  font-size: 18px;
+  line-height: 0.5;
+}
+
+.list-item .corner-button {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  position: absolute;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.list-item .favorite-checkbox {
+  display: none;
 }
 
 .list-item .favorite {
-  position: absolute;
   right: 5px;
   top: 5px;
+  line-height: 1.1;
 }
 
-.list-item .favorite:before {
-  content: "Favorite: ";
-  position: absolute;
-  right: 16px;
+.list-item .favorite {
+  border: 1px solid #ccc;
+}
+
+.favorite-checkbox:checked + .favorite {
+  border: 1px solid #FF3F32;
+  background: #FF3F32;
+  color: #fff;
 }
 
 #places-list, #options, #advanced-options {
