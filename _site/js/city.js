@@ -161,10 +161,12 @@
     var $type = createEl("div", "type " + placeObj.type, $info);
     $type.innerHTML = capitalize(placeObj.type);
 
-    var $link = createEl("a", "link", $info);
-    $link.innerHTML = "Link";
-    $link.setAttribute("href", placeObj.link);
-    $link.setAttribute("target", "_blank");
+    if (placeObj.link !== null) {
+      var $link = createEl("a", "link", $info);
+      $link.innerHTML = "Link";
+      $link.setAttribute("href", placeObj.link);
+      $link.setAttribute("target", "_blank");
+    }
 
     var $cancel = createEl('button', "cancel corner-button", $listItem);
     $cancel.innerHTML = "×";
