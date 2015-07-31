@@ -98,12 +98,17 @@ of fun</p>
 
   </div>
 
+  <h2>Places Info</h2>
   <div id="options">
-    <p class="desc">Curate the list of suggestions to get a personalized list of just the things you care about</p>
-    <label for="see-faves">See only favorites:</label> <input type="checkbox" id="see-faves" />
-    <label for="advanced-toggle">Sort and filter:</label> <input type="checkbox" id="advanced-toggle" />
-    <button id="reset">Reset list</button>
-    <button id="save">Save current list</button>
+    <p class="desc">Curate the list of suggestions to get a personalized list of just the things you care about.</p>
+
+    <input type="checkbox" id="see-faves" /> <label for="see-faves">See only favorites</label>
+    <input type="checkbox" id="advanced-toggle" /> <label for="advanced-toggle">Sort and filter</label>
+    <span class="buttons">
+      <button id="reset">Reset list</button>
+      <button id="save">Save current list</button>
+    </span>
+
     <div id="advanced-options">
       <p>Sort by:</p>
       <select id="sort">
@@ -112,25 +117,28 @@ of fun</p>
         <option value="location">Location (north to south)</option>
         <option value="price">Price (lowest first)</option>
       </select>
+
       <p>Filter categories:</p>
-      <label for="sightseeing">Sightseeing:</label> <input checked="checked" type="checkbox" id="sightseeing" class="type-check" value="sightseeing" />
-      <label for="food">Food:</label> <input checked="checked" type="checkbox" id="food" class="type-check" value="food" />
-      <label for="shopping">Shopping:</label> <input checked="checked" type="checkbox" id="shopping" class="type-check" value="shopping" />
-      <label for="nature">Nature:</label> <input checked="checked" type="checkbox" id="nature" class="type-check" value="nature" />
-      <label for="nightlife">Night Life:</label> <input checked="checked" type="checkbox" id="nightlife" class="type-check" value="nightlife" />
-      <label for="experience">Experience:</label> <input checked="checked" type="checkbox" id="experience" class="type-check" value="experience" />
-      <label for="other">Other:</label> <input checked="checked" type="checkbox" id="other" class="type-check" value="other" />
+      <input checked="checked" type="checkbox" id="sightseeing" class="type-check" value="sightseeing" /> <label class="label-button" for="sightseeing">Sightseeing</label>
+      <input checked="checked" type="checkbox" id="food" class="type-check" value="food" /> <label class="label-button" for="food">Food</label>
+      <input checked="checked" type="checkbox" id="shopping" class="type-check" value="shopping" /> <label class="label-button" for="shopping">Shopping</label>
+      <input checked="checked" type="checkbox" id="nature" class="type-check" value="nature" /> <label class="label-button" for="nature">Nature</label>
+      <input checked="checked" type="checkbox" id="nightlife" class="type-check" value="nightlife" /> <label class="label-button" for="nightlife">Night Life</label>
+      <input checked="checked" type="checkbox" id="experience" class="type-check" value="experience" /> <label class="label-button" for="experience">Experience</label>
+      <input checked="checked" type="checkbox" id="other" class="type-check" value="other" /> <label class="label-button" for="other">Other</label>
 
       <p>Filter price:</p>
-      <label for="price-1"><$10</label> <input checked="checked" type="checkbox" id="price-1" class="price-check" value="1" />
-      <label for="price-2">$11-$30</label> <input checked="checked" type="checkbox" id="price-2" class="price-check" value="2" />
-      <label for="price-3">$31-$60</label> <input checked="checked" type="checkbox" id="price-3" class="price-check" value="3" />
-      <label for="price-4">>$61</label> <input checked="checked" type="checkbox" id="price-4" class="price-check" value="4" />
+      <input checked="checked" type="checkbox" id="price-1" class="price-check" value="1" /> <label class="label-button" for="price-1"><$10</label>
+      <input checked="checked" type="checkbox" id="price-2" class="price-check" value="2" /> <label class="label-button" for="price-2">$11-$30</label>
+      <input checked="checked" type="checkbox" id="price-3" class="price-check" value="3" /> <label class="label-button" for="price-3">$31-$60</label>
+      <input checked="checked" type="checkbox" id="price-4" class="price-check" value="4" /> <label class="label-button" for="price-4">>$61</label>
     </div>
   </div>
 
-  <div id="places-list"></div>
-  <div id="map-canvas" data-lat="-12.084553" data-lng="-77.050936" data-zoom="12"></div>
+  <div class="place-items">
+    <div id="places-list"></div>
+    <div id="map-canvas" data-lat="-12.084553" data-lng="-77.050936" data-zoom="12"></div>
+  </div>
 </div>
 
 <div id="modal-background">

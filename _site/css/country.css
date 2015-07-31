@@ -2,19 +2,14 @@
   display: none;
 }
 
-#full-guides {
-  margin-top: 12px;
-}
-
 #full-guides a {
   display: block;
 }
 
 #map-info {
   display: none;
-  margin-top: 30px;
 }
 
 #map-info .desc {
-  margin-top: 20px;
+  margin: 10px 0;
 }

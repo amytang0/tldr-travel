@@ -56,17 +56,78 @@
   display: none;
 }
 
+#advanced-options p {
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
 #options .desc {
-  margin-top: 20px;
   margin-bottom: 10px;
 }
 
-#options input {
+#options label, #options button {
   margin-right: 15px;
 }
 
-.type-check, .price-check {
+#sightseeing:checked + .label-button {
+  background: #D11919;
+}
+
+#food:checked + .label-button {
+  background: #FFCC00;
+}
+
+#shopping:checked + .label-button {
+  background: #0066FF;
+}
+
+#nature:checked + .label-button {
+  background: #006600;
+}
+
+#nightlife:checked + .label-button {
+  background: #7519D1;
+}
+
+#experience:checked + .label-button {
+  background: #484748;
+}
+
+#other:checked + .label-button {
+  background: #E65C00;
+}
+
+.price-check:checked + .label-button {
+  background: #999;
+}
+
+.type-check:checked + .label-button, .price-check:checked + .label-button {
+  color: #fff;
+}
+
+.type-check + .label-button, .price-check + .label-button {
+  background: #bbb;
+  color: #ddd;
+}
+
+.label-button {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  padding: 5px;
+  margin-bottom: 4px;
   margin-right: 8px;
+  display: inline-block;
+}
+
+.type-check, .price-check {
+  display: none;
 }
 
 #reset, #save {
@@ -102,6 +163,8 @@
   display: block;
   width: 95%;
   padding: 5px;
+  margin-top: 10px;
+  font-size: 14px;
 }
 
 #close-box {
@@ -111,13 +174,26 @@
   right: 0;
 }
 
-button:hover {
+.buttons button {
+  font-size: 14px;
+}
+
+.buttons button:hover {
   cursor: pointer;
+}
+
+.place-items {
+  margin-top: 10px;
 }
 
 @media only screen and (max-width: 600px) {
   #map-canvas, #places-list {
     width: 100%;
     margin: auto;
+  }
+
+  .buttons {
+    display: block;
+    margin-top: 10px;
   }
 }
