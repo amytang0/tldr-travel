@@ -21,32 +21,33 @@
       <link rel="stylesheet" href="/css/country.css">
 </head>
 <body>
+<div class="nav">
+  <a href="/" class="nav-link">Main Menu</a>
+</div>
+<div class="main">
+  <div class="header">
+    <h1 class="title">Peru</h1>
+    <div class="subtext">
+      <div class="author">By Owen Wang</div>
+      <div class="date">Data from July 2015</div>
+    </div>
+  </div>
 
-<a href="/" class="nav">Home</a>
+  <div class="content">
+    <h2>General Info</h2>
 
-<h1>Peru</h1>
-<div class="author">By Owen Wang</div>
-<div class="date">Data from July 2015</div>
-
-<div class="content">
-  <h2>General Info</h2>
-
-  <p>Currency: Soles (1 USD = ~<span data-currency="PEN" id="currency">3.1</span> soles)</p>
-
-<p>Tipping: 1-2 soles at small restaurants, 10% at fancier</p>
-
-<p>SIM Card: Get at any Claro / Movistar. Add money anywhere with “recarga aqui” 
-signs. Data plan ~35 soles per 750MB.</p>
-
-<p>Drinking: 18+ (not heavily enforced)</p>
-
-<p>Washrooms: Bring own toilet paper. Throw used toilet paper in trash, it clogs 
-the toilet.</p>
-
-<p>Eat: lomo saltado, guinea pig, llama meat</p>
-
-<p>Tourist Visa: None for US/Canada. Others: 
-<a href="http://www.limaeasy.com/peru-info/peruvian-visa">here</a></p>
+    <ul>
+  <li><strong>Currency:</strong> Soles (1 USD = ~<span data-currency="PEN" id="currency">3.1</span> soles)</li>
+  <li><strong>Tipping:</strong> 1-2 soles at small restaurants, 10% at fancier</li>
+  <li><strong>SIM Card:</strong> Get at any Claro / Movistar. Add money anywhere with “recarga 
+aqui” signs. Data plan ~35 soles per 750MB.</li>
+  <li><strong>Drinking:</strong> 18+ (not heavily enforced)</li>
+  <li><strong>Washrooms:</strong> Bring own toilet paper. Throw used toilet paper in trash, it 
+clogs the toilet.</li>
+  <li><strong>Eat:</strong> lomo saltado, guinea pig, llama meat</li>
+  <li><strong>Tourist Visa:</strong> None for US/Canada. Others: 
+<a href="http://www.limaeasy.com/peru-info/peruvian-visa">here</a></li>
+</ul>
 
 <div id="cities-meta">
   <div class="city" data-name="ica">
@@ -136,16 +137,17 @@ months+ advanced booking</p>
   </div>
 </div>
 
-</div>
-
-<div id="map-info">
-  <div id="full-guides">
-    Cities with full guides:
   </div>
 
-  <p>Click on routes for time and cost estimates. Click on cities for more info on them.</p>
+  <div id="map-info">
+    <div id="full-guides">
+      <h2>Full city guides</h2>
+    </div>
+
+    <p class="desc">Click on routes for time and cost estimates. Click on cities for more info on them.</p>
+  </div>
+  <div id="map-canvas" data-lat="-14.069839" data-lng="-73.029068" data-zoom="6"></div>
 </div>
-<div id="map-canvas" data-lat="-14.069839" data-lng="-73.029068" data-zoom="6"></div>
 
 <!-- libraries -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWjWoZQhHbd0Nw69SpvOtKW8Po-dyI5-A">

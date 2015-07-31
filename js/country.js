@@ -74,6 +74,7 @@
   var $cities = $citiesMeta.getElementsByClassName("city");
   var $links = $citiesMeta.getElementsByClassName("link");
   var $fullGuides = document.getElementById("full-guides");
+  var $fullGuidesList = createEl("ul", "guides-list", $fullGuides);
 
   //cities
   for (var i = 0; i < $cities.length; i++) {
@@ -98,9 +99,10 @@
       var url = $link.getAttribute("data-name");
       var city = nameWithCountry(url);
 
-      var linkP = createEl("a", "guide-link", $fullGuides);
-      linkP.innerHTML = url.charAt(0).toUpperCase() + url.slice(1);
-      linkP.setAttribute("href", url);
+      var $linkL = createEl("li", "guide-item", $fullGuidesList);
+      var $linkP = createEl("a", "guide-link", $linkL);
+      $linkP.innerHTML = url.charAt(0).toUpperCase() + url.slice(1);
+      $linkP.setAttribute("href", url);
 
       getLatLong(city, function(lat, lng) {
         map.addMarker({

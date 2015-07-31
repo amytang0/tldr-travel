@@ -12,9 +12,8 @@ zoom: MAP ZOOM
 ---
 
 <!-- some basic information about the city -->
-Getting around:
-
-Eat:
+- __Getting around:__ HOW TO GET AROUND?
+- __Eat__: ANYTHING MUST EAT?
 
 {::options parse_block_html="true" /}
 

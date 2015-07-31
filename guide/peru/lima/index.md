@@ -11,10 +11,9 @@ zoom: 12
 
 ---
 
-Getting around: Taxi or buses. EasyTaxi app helps for hailing taxis. Cost based 
-on quadrants. Buses have written on them which streets they go down.
-
-Eat: ceviche, cheap street food
+- __Getting around:__ Taxi or buses. EasyTaxi app helps for hailing taxis. Cost 
+based on quadrants. Buses have written on them which streets they go down.
+- __Eat:__ ceviche, cheap street food
 
 {::options parse_block_html="true" /}
 

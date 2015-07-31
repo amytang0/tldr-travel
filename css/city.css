@@ -56,6 +56,11 @@
   display: none;
 }
 
+#options .desc {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 #options input {
   margin-right: 15px;
 }
@@ -110,9 +115,9 @@ button:hover {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 600px) {
   #map-canvas, #places-list {
-    width: 90%;
+    width: 100%;
     margin: auto;
   }
 }

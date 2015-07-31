@@ -12,4 +12,9 @@
 
 #map-info {
   display: none;
+  margin-top: 30px;
+}
+
+#map-info .desc {
+  margin-top: 20px;
 }

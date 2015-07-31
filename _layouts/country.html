@@ -6,27 +6,33 @@ layout: default
   <link rel="stylesheet" href="/css/country.css">
 </head>
 <body>
-
-<a href="/" class="nav">Home</a>
-
-<h1>{{ page.title }}</h1>
-<div class="author">By {{ page.author }}</div>
-<div class="date">Data from {{ page.date | date: '%B %Y' }}</div>
-
-<div class="content">
-  <h2>General Info</h2>
-
-  {{ content }}
+<div class="nav">
+  <a href="/" class="nav-link">Main Menu</a>
 </div>
-
-<div id="map-info">
-  <div id="full-guides">
-    Cities with full guides:
+<div class="main">
+  <div class="header">
+    <h1 class="title">{{ page.title }}</h1>
+    <div class="subtext">
+      <div class="author">By {{ page.author }}</div>
+      <div class="date">Data from {{ page.date | date: '%B %Y' }}</div>
+    </div>
   </div>
 
-  <p>Click on routes for time and cost estimates. Click on cities for more info on them.</p>
+  <div class="content">
+    <h2>General Info</h2>
+
+    {{ content }}
+  </div>
+
+  <div id="map-info">
+    <div id="full-guides">
+      <h2>Full city guides</h2>
+    </div>
+
+    <p class="desc">Click on routes for time and cost estimates. Click on cities for more info on them.</p>
+  </div>
+  <div id="map-canvas" data-lat="{{ page.lat }}" data-lng="{{ page.lng }}" data-zoom="{{ page.zoom }}"></div>
 </div>
-<div id="map-canvas" data-lat="{{ page.lat }}" data-lng="{{ page.lng }}" data-zoom="{{ page.zoom }}"></div>
 
 <!-- libraries -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWjWoZQhHbd0Nw69SpvOtKW8Po-dyI5-A">
