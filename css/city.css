@@ -28,6 +28,13 @@
   margin-left: 25px;
 }
 
+.info .price, .info .type, .info .link {
+  display: inline-block;
+  border: 1px solid #ddd;
+  padding: 3px;
+  margin: 3px;
+}
+
 .list-item .info h1 {
   font-size: 20px;
   margin-bottom: 4px;
@@ -70,31 +77,31 @@
   margin-right: 15px;
 }
 
-#sightseeing:checked + .label-button {
+.type.sightseeing, #sightseeing:checked + .label-button {
   background: #D11919;
 }
 
-#food:checked + .label-button {
+.type.food, #food:checked + .label-button {
   background: #FFCC00;
 }
 
-#shopping:checked + .label-button {
+.type.shopping, #shopping:checked + .label-button {
   background: #0066FF;
 }
 
-#nature:checked + .label-button {
+.type.nature, #nature:checked + .label-button {
   background: #006600;
 }
 
-#nightlife:checked + .label-button {
+.type.nightlife, #nightlife:checked + .label-button {
   background: #7519D1;
 }
 
-#experience:checked + .label-button {
+.type.experience, #experience:checked + .label-button {
   background: #484748;
 }
 
-#other:checked + .label-button {
+.type.other, #other:checked + .label-button {
   background: #E65C00;
 }
 

@@ -101,7 +101,7 @@
 
       var $linkL = createEl("li", "guide-item", $fullGuidesList);
       var $linkP = createEl("a", "guide-link", $linkL);
-      $linkP.innerHTML = url.charAt(0).toUpperCase() + url.slice(1);
+      $linkP.innerHTML = capitalize(url);
       $linkP.setAttribute("href", url);
 
       getLatLong(city, function(lat, lng) {

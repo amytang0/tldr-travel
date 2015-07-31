@@ -40,6 +40,13 @@
     }
   };
 
+  var PRICE_INFO = {
+    1: "<$10",
+    2: "$11-$30",
+    3: "$31-$60",
+    4: ">$61"
+  };
+
   var $map = document.getElementById("map-canvas");
   var $list = document.getElementById("places-list");
 
@@ -149,13 +156,13 @@
     $info.innerHTML = placeObj.content;
 
     var $price = createEl("div", "price", $info);
-    $price.innerHTML = "price category: " + placeObj.price;
+    $price.innerHTML = PRICE_INFO[placeObj.price];
 
-    var $type = createEl("div", "type", $info);
-    $type.innerHTML = "type: " + placeObj.type;
+    var $type = createEl("div", "type " + placeObj.type, $info);
+    $type.innerHTML = capitalize(placeObj.type);
 
     var $link = createEl("a", "link", $info);
-    $link.innerHTML = "link";
+    $link.innerHTML = "Link";
     $link.setAttribute("href", placeObj.link);
     $link.setAttribute("target", "_blank");
 
