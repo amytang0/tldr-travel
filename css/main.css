@@ -92,6 +92,19 @@ ul li {
   margin-bottom: 12px;
 }
 
+.main-description {
+  margin-top: 25px;
+}
+
+.main-description p {
+  margin-bottom: 10px;
+}
+
+.subheader {
+  font-weight: bold;
+  color: #999;
+}
+
 @media only screen and (max-width: 720px) {
   .main {
     padding: 20px;

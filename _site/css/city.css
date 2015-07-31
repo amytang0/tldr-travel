@@ -28,6 +28,10 @@
   padding: 0 20px;
 }
 
+.info > p {
+  margin-bottom: 10px;
+}
+
 .info .price, .info .type, .info .link {
   display: inline-block;
   border: 1px solid #ddd;
@@ -68,11 +72,10 @@
 .list-item .favorite {
   right: 5px;
   top: 5px;
-  line-height: 1.1;
-}
-
-.list-item .favorite {
+  line-height: 1.5;
   border: 1px solid #ccc;
+  font-size: 13px;
+  padding-left: 2px;
 }
 
 .favorite-checkbox:checked + .favorite {
