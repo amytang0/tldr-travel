@@ -13,3 +13,12 @@
 #map-info .desc {
   margin: 10px 0;
 }
+
+#map-canvas {
+  margin: 0 50px 50px 50px;
+}
+
+.map-wrapper {
+  margin: auto;
+  max-width: 1000px;
+}

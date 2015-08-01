@@ -47,7 +47,9 @@ a:hover {
 }
 
 .main {
-  padding: 50px;
+  padding: 50px 50px 0 50px;
+  max-width: 650px;
+  margin: auto;
 }
 
 .title {

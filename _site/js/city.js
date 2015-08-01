@@ -413,6 +413,7 @@
 
   //if there's a list, add event listeners for the options
   if ($places.length > 0) {
+    hide(document.getElementById("loading"));
     show($list, "inline-block");
     initOptions();
   }
