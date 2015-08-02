@@ -3,14 +3,21 @@
 }
 
 #map-canvas, #places-list {
-  width: 49%;
   display: inline-block;
   height: 500px;
   margin: 10px auto;
 }
 
+#map-canvas {
+  width: 60%;
+}
+
+#places-list {
+  width: 39%;
+}
+
 .place-items {
-  padding: 10px 50px 50px 50px;
+  padding: 10px 50px 80px 50px;
   margin: auto;
 }
 
@@ -231,6 +238,12 @@
   }
 
   .place-items {
-    padding: 10px 30px 50px 30px;
+    padding: 10px 30px 90px 30px;
+  }
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 601px) {
+  #map-canvas, #places-list {
+    width: 49%;
   }
 }
