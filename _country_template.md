@@ -4,10 +4,10 @@ title: TITLE
 author: AUTHOR
 date: DATE
 country: COUNTRY
-currency: CURRENCY
 lat: MAP CENTER LATITUDE
 lng: MAP CENTER LONGITUDE
 zoom: MAP ZOOM
+currency: CURRENCY CODE
 
 ---
 
