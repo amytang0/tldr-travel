@@ -17,8 +17,7 @@ local environment:
 ```
   git clone git@github.com:wangfowen/tldr-travel.git
   cd tldr-travel/
-  git branch guide/<name of place>
-  git checkout guide/<name of place>
+  git checkout -b guide/<name of place>
   bundle exec jekyll serve
 ```
 
