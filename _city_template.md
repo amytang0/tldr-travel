@@ -22,6 +22,12 @@ zoom: MAP ZOOM
 LINK" data-name="PLACE NAME">
 INFO ON PLACE
 </div>
+
+<!-- use latlng if google maps can't find the name -->
+<div class="place" data-type="TYPE" data-price="NUMBER" data-link="TRIPADVISOR 
+LINK" data-latlng="LAT, LNG">
+INFO ON PLACE
+</div>
 </div>
 
 <!-- TYPES
@@ -38,6 +44,7 @@ INFO ON PLACE
 
 <!-- PRICE NUMBER
 
+0 = free
 1 = <$10
 2 = $11-$30
 3 = $31-$60

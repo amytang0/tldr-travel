@@ -41,6 +41,7 @@
   };
 
   var PRICE_INFO = {
+    0: "Free",
     1: "<$10",
     2: "$11-$30",
     3: "$31-$60",
@@ -313,7 +314,7 @@
           }
         }
       } else if (sort === "price") {
-        for (var price = 1; price <= 4; price++) {
+        for (var price = 0; price <= 4; price++) {
           for (var i = 0; i < placeObjs.length; i++) {
             if (shouldShow(placeObjs[i]) && placeObjs[i].price === price) {
               sortedList.push(placeObjs[i]);

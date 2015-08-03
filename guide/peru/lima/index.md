@@ -18,7 +18,7 @@ based on quadrants. Buses have written on them which streets they go down.
 {::options parse_block_html="true" /}
 
 <div id="places-meta">
-<div class="place" data-type="sightseeing" data-price="1" 
+<div class="place" data-type="sightseeing" data-price="0" 
 data-link="http://www.tripadvisor.ca/Attraction_Review-g294316-d311625-Reviews-Plaza_de_Armas_Plaza_Mayor-Lima_Lima_Region.html" 
 data-latlng="-12.046122, -77.030703">
 #Plaza de Armas#
@@ -50,7 +50,7 @@ data-name="malabar">
 Fancy restaurant with local flavored inspirations - ~$40
 </div>
 
-<div class="place" data-type="shopping" data-price="1" 
+<div class="place" data-type="shopping" data-price="0" 
 data-link="http://www.tripadvisor.ca/Attraction_Review-g294316-d596436-Reviews-Shopping_Center_Larcomar_Centro_Comercial_Larcomar-Lima_Lima_Region.html" 
 data-name="larcomar">
 #Shopping Center Larcomar#
@@ -58,7 +58,7 @@ data-name="larcomar">
 Modern shopping center right by the beach cliff
 </div>
 
-<div class="place" data-type="nature" data-price="1" 
+<div class="place" data-type="nature" data-price="0" 
 data-link="http://www.tripadvisor.ca/Attraction_Review-g294316-d2441173-Reviews-Parque_Kennedy_Parque_Central_de_Miraflores-Lima_Lima_Region.html" 
 data-name="parque kennedy">
 #Parque Central de Miraflores#

@@ -11,6 +11,8 @@ currency: CURRENCY CODE
 
 ---
 
+<!-- see http://www.xe.com/iso4217.php#A for current currency code -->
+
 <!-- some basic information about the country, can add or remove sections as 
 needed -->
 <!-- currency data auto-updated from latest if API endpoint still working -->
