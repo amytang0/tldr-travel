@@ -76,24 +76,36 @@
     }
 
     el.className += " selected-item";
-    //scroll pane to match when fits on screen with map
-    if (window.innerWidth > 480) {
-      el.scrollIntoView();
-    }
   }
 
   function addMarker(placeObj) {
-    map.addMarker({
+    var marker = map.addMarker({
       lat: placeObj.lat,
       lng: placeObj.lng,
       icon: pinIcon(TYPE_INFO[placeObj.type].color),
       infoWindow: {
         content: placeObj.content
       },
-      click: function() {
+      mouseup: function() {
         selectItem(placeObj.$el());
+
+        //scroll pane to match when fits on screen with map
+        if (window.innerWidth > 480) {
+          placeObj.$el().scrollIntoView();
+        }
       }
     });
+
+    //TODO: remove previous event listeners
+
+    //TODO: add back in once remove listeners
+    /*
+    placeObj.$el().addEventListener("click", function() {
+      google.maps.event.trigger(marker, 'click');
+
+      selectItem(placeObj.$el());
+    });
+    */
   }
 
   //hide and show the markers and items on list by attr
