@@ -58,6 +58,8 @@
     zoom: zoom
   });
 
+  map.map.setOptions({scrollwheel: false});
+
   var infoWindow = new google.maps.InfoWindow({
     content: ""});
   var WEIGHT = 6;

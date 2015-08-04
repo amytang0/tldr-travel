@@ -66,6 +66,8 @@
     zoom: zoom
   });
 
+  map.map.setOptions({scrollwheel: false});
+
   function selectItem(el) {
     var prevSelected = $list.getElementsByClassName("selected-item");
 
