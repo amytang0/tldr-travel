@@ -105,6 +105,7 @@ ul li {
 .subheader {
   font-weight: bold;
   color: #999;
+  padding-top: 6px;
 }
 
 .container {
@@ -126,6 +127,7 @@ ul li {
 
 .guides-list {
   font-size: 18px;
+  padding-bottom: 70px;
 }
 
 @media only screen and (max-width: 600px) {
