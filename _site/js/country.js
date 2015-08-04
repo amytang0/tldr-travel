@@ -76,7 +76,7 @@
   var $cities = $citiesMeta.getElementsByClassName("city");
   var $links = $citiesMeta.getElementsByClassName("link");
   var $fullGuides = document.getElementById("full-guides");
-  var $fullGuidesList = createEl("ul", "guides-list", $fullGuides);
+  var $fullGuidesList = createEl("ul", "city-guides-list", $fullGuides);
 
   //cities
   for (var i = 0; i < $cities.length; i++) {
