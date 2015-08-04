@@ -18,7 +18,8 @@
 
 .place-items {
   padding: 10px 50px 80px 50px;
-  margin: auto;
+  margin: 0px auto;
+  max-width: 1200px;
 }
 
 #places-list {
@@ -51,6 +52,14 @@
   margin: 3px;
 }
 
+.info .link {
+  background: #F8F8F8;
+}
+
+.info .link:active {
+  background: #E8E8E8;
+}
+
 .list-item .info h1 {
   font-size: 20px;
   margin-bottom: 4px;
@@ -75,6 +84,8 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  cursor: pointer;
+  outline: none;
 }
 
 .list-item .favorite-checkbox {
@@ -143,16 +154,77 @@
 }
 
 .price-check:checked + .label-button {
-  background: #999;
+  background: #F8F8F8;
+  color: rgba(0, 0, 0, 0.7);
 }
 
-.type-check:checked + .label-button, .price-check:checked + .label-button {
+.type-check:checked + .label-button {
   color: #fff;
 }
 
 .type-check + .label-button, .price-check + .label-button {
-  background: #bbb;
-  color: #ddd;
+  background: #eee;
+  color: #ccc;
+}
+
+#options input[type=checkbox] {
+  visibility: hidden;
+}
+
+.radio {
+  width: 28px;
+  height: 28px;
+  background: #ddd;
+  position: relative;
+  display: inline-block;
+}
+
+.radio label {
+  cursor: pointer;
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  left: 1px;
+  top: 1px;
+  background: #F8F8F8;
+}
+
+.radio label:active {
+  background: #E8E8E8;
+}
+
+.radio label:after {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 7px;
+  background: transparent;
+  top: 7px;
+  left: 5px;
+  border: 1px solid #000;
+  border-top: none;
+  border-right: none;
+
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.radio label:hover::after {
+  opacity: 0.3;
+}
+
+.radio input[type=checkbox]:checked + label:after {
+  opacity: 0.7;
+}
+
+.outer-label {
+  vertical-align: sub;
+  margin-left: 2px;
 }
 
 .label-button {
@@ -216,17 +288,40 @@
   position: absolute;
   top: 0;
   right: 0;
+  cursor: pointer;
 }
 
 .buttons button {
-  font-size: 14px;
+  font-size: 16px;
+  background: #F8F8F8;
+  border: 1px solid #ddd;
+  height: 31px;
+  vertical-align: sub;
+  outline: none;
 }
 
 .buttons button:hover {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 600px) {
+.buttons button:active {
+  background: #E8E8E8;
+}
+
+#sort {
+  height: 31px;
+  font-size: 16px;
+  -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   text-align: center;
+   border-radius: 0;
+   padding-left: 10px;
+   border: 1px solid #ddd;
+   background: #F8F8F8;
+}
+
+@media only screen and (max-width: 650px) {
   #map-canvas, #places-list {
     width: 100%;
     margin: auto;
@@ -242,8 +337,7 @@
   }
 }
 
-@media only screen and (max-width: 1000px) and (min-width: 601px) {
+@media only screen and (max-width: 1000px) and (min-width: 651px) {
   #map-canvas, #places-list {
-    width: 49%;
   }
 }

@@ -104,8 +104,16 @@ of fun</p>
   <div id="options">
     <p class="desc">Curate the list of suggestions to get a personalized list of just the things you care about.</p>
 
-    <input type="checkbox" id="see-faves" /> <label for="see-faves">See only favorites</label>
-    <input type="checkbox" id="advanced-toggle" /> <label for="advanced-toggle">Sort and filter</label>
+    <div class="radio">
+      <input type="checkbox" id="see-faves" />
+      <label for="see-faves"></label>
+    </div>
+    <label for="see-faves" class="outer-label">See only favorites</label>
+    <div class="radio">
+      <input type="checkbox" id="advanced-toggle" />
+      <label for="advanced-toggle"></label>
+    </div>
+    <label for="see-faves" class="outer-label">Sort and filter</label>
     <span class="buttons">
       <button id="reset">Reset list</button>
       <button id="save">Save current list</button>
