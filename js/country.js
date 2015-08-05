@@ -91,7 +91,7 @@
         map.addMarker({
           lat: lat,
           lng: lng,
-          icon: pinIcon("FE7569"),
+          icon: pinIcon("F44E4D"),
           click: function(e) {
             openWindow({lat: lat + 0.7, lng: lng}, $city.innerHTML);
           }
@@ -101,11 +101,16 @@
   }
 
   for (var i = 0; i < $links.length; i++) {
-    (function($link) {
+    (function($link, i) {
       var url = $link.getAttribute("data-name");
       var city = nameWithCountry(url);
 
       var $linkL = createEl("li", "guide-item", $fullGuidesList);
+      $linkL.style["border-left"] = "5px solid " + getColor(i);
+
+      var $linkImg = createEl("img", "guide-img", $linkL);
+      $linkImg.setAttribute("src", url + ".jpg");
+
       var $linkP = createEl("a", "guide-link", $linkL);
       $linkP.innerHTML = capitalize(url);
       $linkP.setAttribute("href", url);
@@ -114,14 +119,13 @@
         map.addMarker({
           lat: lat,
           lng: lng,
-          icon: pinIcon("0660B0"),
-          //TODO: open in a modal?
+          icon: pinIcon(getColor(i).substring(1)),
           click: function(e) {
             window.open(url, "_self");
           }
         });
       });
-    })($links[i]);
+    })($links[i], i);
   }
 
   var $routesMeta = document.getElementById("routes-meta");

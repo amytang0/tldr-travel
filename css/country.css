@@ -27,6 +27,29 @@
   font-size: 18px;
 }
 
+.guide-item {
+  border-top: 1px solid #F8F8F8;
+  border-bottom: 1px solid #F8F8F8;
+  border-right: 1px solid #F8F8F8;
+  box-shadow: 2px 2px 1px #aaa;
+  width: 240px;
+  padding: 8px 5px 0 10px;
+  margin: 5px;
+  display: inline-block;
+}
+
+.guide-img {
+  height: 36px;
+  width: 36px;
+  float: left;
+  border-radius: 100%;
+}
+
+.guide-link {
+  padding: 10px 50px;
+}
+
+
 @media only screen and (max-width: 650px) {
   #map-canvas {
     margin: 0 20px 90px 20px;
