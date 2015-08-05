@@ -48,9 +48,9 @@ center. This and the coordinates themselves will be more obvious once you have
 some pins on the map.
 
 We can now get to filling out the actual content of the guide! This can be done 
-in markdown, no need to write HTML. Feel free to fill out the ones you find 
-relevant / delete the others. You may of course also add other ones I didn't 
-think of!
+in markdown, no need to write HTML. For the markdown to work it has to be flush 
+against the left, no indenting. Feel free to fill out the ones you find relevant 
+/ delete the others. You may of course also add other ones I didn't think of!
 
 Now at this point what you have to do for a city guide vs country guide 
 diverges. If you look at your .md file, hopefully my comments make what you have 
@@ -86,6 +86,11 @@ right place on the map. If not, play around with it to get what you want mapped.
 guides. Nothing is needed within the div and `data-name` should just be the 
 city's name. Use this type if you want to write a whole city guide about the 
 place.
+
+Link markers need an image representing the place. 100px by 100px is a good size 
+(it'll be scaled down so don't worry about exact size, just better for load 
+speeds). It should be named _city_name.extension_ ("machu_picchu.jpg" for 
+example) and placed in the folder _guide/\<country name\>_.
 
 Within the `routes-meta`, there are also two types of possible route divs -- 
 ones with a `route` class and ones with a `polyline` class. 
@@ -130,6 +135,12 @@ the category for the item. The options are:
 
 `data-link` is an optional field for if you want to provide a link to more 
 information.
+
+`data-img` is also an optional field for if you want to add an image to the 
+item. The attribute should be the _name.extension_ ("foo.jpg" for example). 
+Place the image in the folder _guide/\<country name\>/\<city name\>_. The image 
+should be about 300px by 300px (it'll be scaled down so don't worry about exact 
+size, just better for load speeds).
 
 `data-name` is a semi-optional field. You must either have that or 
 `data-latlng`. One or the other is used to provide the marker on the map for 

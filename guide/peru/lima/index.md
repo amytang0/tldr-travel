@@ -13,7 +13,7 @@ zoom: 12
 
 ##Food##
 
-- __Eat:__ ceviche and various street foods. Street food usually just 1-2 soles
+- __Eat:__ Ceviche and various street foods. Street food usually just 1-2 soles
 
 ##Transportation##
 
@@ -45,7 +45,7 @@ data-link="http://www.tripadvisor.ca/Restaurant_Review-g294316-d1230424-Reviews-
 data-name="Calle San Martin 595 miraflores">
 #Punto Azul#
 
-Very delicious seafood place - ~$15
+Delicious seafood place (~$15)
 </div>
 
 <div class="place" data-type="food" data-price="3" 
@@ -53,7 +53,7 @@ data-link="http://www.tripadvisor.ca/Restaurant_Review-g294316-d789641-Reviews-M
 data-name="malabar">
 #Malabar#
 
-Fancy restaurant with local flavored inspirations - ~$40
+Fancy restaurant with local flavored inspirations (~$40)
 </div>
 
 <div class="place" data-type="shopping" data-price="0" 
@@ -69,8 +69,8 @@ data-link="http://www.tripadvisor.ca/Attraction_Review-g294316-d2441173-Reviews-
 data-name="parque kennedy" data-img="park.jpg">
 #Parque Central de Miraflores#
 
-Miraflores is the nicer area of Lima. Park has stray cats all over and is lively 
-with locals at night - dancing, singing, etc.
+Park with stray cats and lively local happenings (dancing, singing, etc) at 
+night. Miraflores in general is the nicer part of Lima
 </div>
 
 <div class="place" data-type="food" data-price="4" 
@@ -78,7 +78,7 @@ data-link="http://www.tripadvisor.ca/Attraction_Review-g294316-d2335215-Reviews-
 data-name="skykitchen" data-img="kitchen.jpg">
 #Sky Kitchen Cooking Class#
 
-Learn local cuisines while also learning lots about the sightseeing and having tons 
+Learn local cuisines while also learning lots about the culture and having tons 
 of fun
 </div>
 
@@ -87,6 +87,6 @@ data-link="http://www.tripadvisor.ca/Attraction_Review-g294316-d2441173-Reviews-
 data-name="huaca pucclana" data-img="huaca.jpg">
 #Huaca Pucllana#
 
-Ancient ruins made of mud
+Ancient ruins made entirely of mud
 </div>
 </div>

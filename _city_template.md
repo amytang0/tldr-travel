@@ -11,21 +11,27 @@ zoom: MAP ZOOM
 
 ---
 
-<!-- some basic information about the city -->
-- __Getting around:__ HOW TO GET AROUND?
-- __Eat__: ANYTHING MUST EAT?
+<!-- anything unique about the city that differs from the country -->
+##Food##
+
+- __Eat:__ WHAT'S SPECIAL TO EAT HERE? HOW MUCH DO THINGS USUALLY COST?
+
+##Transportation##
+
+- __Public:__ WHAT'S TRANSPORTATION LIKE? HOW MUCH DOES IT USUALLY COST? ANY 
+INFO TO HELP WITH IT?
 
 {::options parse_block_html="true" /}
 
 <div id="places-meta">
+<!-- place image if there is one in guide/<country name>/<city name> -->
 <div class="place" data-type="TYPE" data-price="NUMBER" data-link="TRIPADVISOR 
-LINK" data-name="PLACE NAME">
+LINK" data-name="PLACE NAME" data-img="IMG.JPG">
 INFO ON PLACE
 </div>
 
 <!-- use latlng if google maps can't find the name -->
-<div class="place" data-type="TYPE" data-price="NUMBER" data-link="TRIPADVISOR 
-LINK" data-latlng="LAT, LNG">
+<div class="place" data-type="TYPE" data-price="NUMBER" data-latlng="LAT, LNG">
 INFO ON PLACE
 </div>
 </div>

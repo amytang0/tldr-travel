@@ -33,9 +33,23 @@ a:hover {
   height: 500px;
 }
 
+.gm-style-iw {
+  max-width: 300px;
+}
+
 .gm-style-iw h1 {
   font-size: 16px;
   margin-bottom: 4px;
+}
+
+.gm-style-iw p {
+  margin-top: 5px;
+}
+
+.gm-style-iw img {
+  height: 200px;
+  margin: 5px auto;
+  display: block;
 }
 
 .date {
