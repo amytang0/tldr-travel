@@ -147,6 +147,10 @@ function capitalize(str) {
     });
 }
 
+function urlize(str) {
+  return str.replace(" ", "_").toLowerCase();
+}
+
 function blankHrefs() {
   var main = document.getElementById("main");
   var as = main.getElementsByTagName("a");

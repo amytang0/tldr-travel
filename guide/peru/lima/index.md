@@ -25,7 +25,7 @@ zoom: 12
 <div id="places-meta">
 <div class="place" data-type="sightseeing" data-price="0" 
 data-link="http://www.tripadvisor.ca/Attraction_Review-g294316-d311625-Reviews-Plaza_de_Armas_Plaza_Mayor-Lima_Lima_Region.html" 
-data-latlng="-12.046122, -77.030703">
+data-latlng="-12.046122, -77.030703" data-img="plaza.jpg">
 #Plaza de Armas#
 
 Historical central plaza
@@ -33,7 +33,8 @@ Historical central plaza
 
 <div class="place" data-type="sightseeing" data-price="1" 
 data-link="http://www.tripadvisor.ca/Attraction_Review-g294316-d311638-Reviews-Iglesia_y_Convento_de_San_Francisco-Lima_Lima_Region.html" 
-data-name="Museo del Convento de San Francisco de Asis de Lima">
+data-name="Museo del Convento de San Francisco de Asis de Lima" 
+data-img="church.jpg">
 #Iglesia y Convento de San Francisco#
 
 Church and catacombs
@@ -57,7 +58,7 @@ Fancy restaurant with local flavored inspirations - ~$40
 
 <div class="place" data-type="shopping" data-price="0" 
 data-link="http://www.tripadvisor.ca/Attraction_Review-g294316-d596436-Reviews-Shopping_Center_Larcomar_Centro_Comercial_Larcomar-Lima_Lima_Region.html" 
-data-name="larcomar">
+data-name="larcomar" data-img="larcomar.jpg">
 #Shopping Center Larcomar#
 
 Modern shopping center right by the beach cliff
@@ -65,7 +66,7 @@ Modern shopping center right by the beach cliff
 
 <div class="place" data-type="nature" data-price="0" 
 data-link="http://www.tripadvisor.ca/Attraction_Review-g294316-d2441173-Reviews-Parque_Kennedy_Parque_Central_de_Miraflores-Lima_Lima_Region.html" 
-data-name="parque kennedy">
+data-name="parque kennedy" data-img="park.jpg">
 #Parque Central de Miraflores#
 
 Miraflores is the nicer area of Lima. Park has stray cats all over and is lively 
@@ -74,7 +75,7 @@ with locals at night - dancing, singing, etc.
 
 <div class="place" data-type="food" data-price="4" 
 data-link="http://www.tripadvisor.ca/Attraction_Review-g294316-d2335215-Reviews-SkyKitchen_Peruvian_Cooking_Class-Lima_Lima_Region.html" 
-data-name="skykitchen">
+data-name="skykitchen" data-img="kitchen.jpg">
 #Sky Kitchen Cooking Class#
 
 Learn local cuisines while also learning lots about the sightseeing and having tons 
@@ -83,7 +84,7 @@ of fun
 
 <div class="place" data-type="sightseeing" data-price="2" 
 data-link="http://www.tripadvisor.ca/Attraction_Review-g294316-d2441173-Reviews-Parque_Kennedy_Parque_Central_de_Miraflores-Lima_Lima_Region.html" 
-data-name="huaca pucclana">
+data-name="huaca pucclana" data-img="huaca.jpg">
 #Huaca Pucllana#
 
 Ancient ruins made of mud

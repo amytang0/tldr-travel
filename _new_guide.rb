@@ -8,7 +8,7 @@ if (country.nil?)
   exit
 end
 
-country = country.downcase
+country = country.downcase.gsub(" ", "_")
 date = Date::strptime(Time.new.to_s, "%Y-%m-%d")
 
 if (city.nil?)
@@ -19,7 +19,7 @@ if (city.nil?)
   #currently assumes title is same as place name
   content = content.gsub("COUNTRY", "\"#{country.capitalize}\"").gsub("TITLE", "\"#{country.capitalize}\"").gsub("DATE", date.strftime("%Y-%m-%d %H:%M:%S"))
 
-  filename = "_posts/#{date.strftime("%Y-%m-%d")}-#{country.gsub(" ", "-").gsub("?", "")}.md"
+  filename = "_posts/#{date.strftime("%Y-%m-%d")}-#{country.gsub(" ", "_").gsub("?", "")}.md"
   #make file in _posts for the country
   File.write(filename, content)
 
@@ -27,7 +27,7 @@ if (city.nil?)
   Dir.mkdir "guide/#{country}"
 else
 #city guide
-  city = city.downcase
+  city = city.downcase.gsub(" ", "_")
   TEMPLATE_FILE = '_city_template.md'
 
   content = File.read(TEMPLATE_FILE)

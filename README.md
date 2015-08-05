@@ -22,14 +22,15 @@ local environment:
 ```
 
 If you're making a new __country guide__ for one that hasn't yet been added, do 
-`ruby _new_guide.rb <country name>`. It'll create a semi-populated guide in 
+`ruby _new_guide.rb "<country name>"`. It'll create a semi-populated guide in 
 _\_posts/\<date\>-\<country name\>.md_. It'll be viewable at 
 `http://localhost:4000/guide/<country name>/`.
 
 If you're making a new __city guide__ for a city which already has an 
-accompanying country guide, do `ruby _new_guide.rb <country name> <city name>`. 
-The city guide should be in _guide/\<country name\>/\<city name\>/index.md_ and 
-should be viewable at `http://localhost:4000/guide/<country name>/<city name>/`.
+accompanying country guide, do `ruby _new_guide.rb "<country name>" "<city 
+name>"`.  The city guide should be in _guide/\<country name\>/\<city 
+name\>/index.md_ and should be viewable at `http://localhost:4000/guide/<country 
+name>/<city name>/`.
 
 Currently you need to make a country guide first if there isn't yet one for the 
 city you want to add.

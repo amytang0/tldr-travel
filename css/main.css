@@ -130,6 +130,31 @@ ul li {
   padding-bottom: 70px;
 }
 
+.loading {
+  margin-top: 30px;
+  font-weight: bold;
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes loading {
+    0% {
+        color: #000;
+        opacity: 0.7;
+    }
+    22% {
+        color: #333;
+    }
+    77% {
+        color: #666;
+    }
+    100% {
+        color: #333;
+    }
+}
+
 @media only screen and (max-width: 600px) {
   .footer {
     height: 3em;

@@ -102,8 +102,9 @@
 
   for (var i = 0; i < $links.length; i++) {
     (function($link, i) {
-      var url = $link.getAttribute("data-name");
-      var city = nameWithCountry(url);
+      var cityName = $link.getAttribute("data-name");
+      var url = urlize(cityName);
+      var city = nameWithCountry(cityName);
 
       var $linkL = createEl("li", "guide-item", $fullGuidesList);
       $linkL.style["border-left"] = "5px solid " + getColor(i);
@@ -112,7 +113,7 @@
       $linkImg.setAttribute("src", url + ".jpg");
 
       var $linkP = createEl("a", "guide-link", $linkL);
-      $linkP.innerHTML = capitalize(url);
+      $linkP.innerHTML = capitalize(cityName);
       $linkP.setAttribute("href", url);
 
       getLatLong(city, function(lat, lng) {

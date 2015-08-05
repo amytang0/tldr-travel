@@ -177,6 +177,11 @@
     $listItem.className = "list-item";
     $listItem.setAttribute("id", placeId(placeObj));
 
+    if (placeObj.img !== null) {
+      var $img = createEl('img', "list-img", $listItem);
+      $img.setAttribute("src", placeObj.img);
+    }
+
     var $info = createEl('div', "info", $listItem);
     $info.innerHTML = placeObj.content;
 
@@ -241,6 +246,7 @@
         var name = $place.getAttribute("data-name");
         var type = $place.getAttribute("data-type");
         var link = $place.getAttribute("data-link");
+        var img = $place.getAttribute("data-img");
         var price = getInt($place, "data-price");
         var place;
 
@@ -260,6 +266,7 @@
             price: price,
             content: $place.innerHTML,
             index: i,
+            img: img,
             canceled: false,
             toggledOn: true,
             favorite: false,

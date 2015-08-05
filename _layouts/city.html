@@ -9,7 +9,7 @@ layout: default
 
 <div class="nav">
   <a href="/" class="nav-link">Main Menu</a>
-  <a href="/guide/{{ page.country | downcase}}" class="nav-link">Back to {{ page.country }}</a>
+  <a href="/guide/{{ page.country | downcase | replace: ' ', '_' }}" class="nav-link">Back to {{ page.country }}</a>
 </div>
 <div class="main" id="main">
   <div class="header">

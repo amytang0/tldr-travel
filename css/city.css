@@ -37,6 +37,12 @@
   border: 2px solid #FFCB45;
 }
 
+.list-item .list-img {
+  height: 150px;
+  margin: 5px auto;
+  display: block;
+}
+
 .list-item .info {
   padding: 0 20px;
 }
@@ -357,5 +363,6 @@
 
 @media only screen and (max-width: 1000px) and (min-width: 651px) {
   #map-canvas, #places-list {
+    width: 49%;
   }
 }
