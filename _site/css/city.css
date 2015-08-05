@@ -329,7 +329,7 @@
    appearance: none;
    text-align: center;
    border-radius: 0;
-   padding-left: 10px;
+   padding: 0 10px;
    border: 1px solid #ddd;
    background: #F8F8F8;
 }

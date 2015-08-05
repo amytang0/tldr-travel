@@ -78,6 +78,8 @@
     el.className += " selected-item";
   }
 
+  var listeners = {};
+
   function addMarker(placeObj) {
     var marker = map.addMarker({
       lat: placeObj.lat,
@@ -96,16 +98,22 @@
       }
     });
 
-    //TODO: remove previous event listeners
+    if (listeners[placeObj.index] !== undefined) {
+      placeObj.$el().removeEventListener("click", listeners[placeObj.index]);
+    }
 
-    //TODO: add back in once remove listeners
-    /*
-    placeObj.$el().addEventListener("click", function() {
+    var listener = function(e) {
+      if (e.target.className.indexOf("corner-button") !== -1) {
+        return;
+      }
+
       google.maps.event.trigger(marker, 'click');
 
       selectItem(placeObj.$el());
-    });
-    */
+    };
+
+    placeObj.$el().addEventListener("click", listener);
+    listeners[placeObj.index] = listener;
   }
 
   //hide and show the markers and items on list by attr
@@ -217,6 +225,8 @@
     for (var i = 0; i < itemsList.length; i++) {
       addToList(itemsList[i]);
     }
+
+    repopulateItems();
   }
 
   var $placesMeta = document.getElementById("places-meta");
@@ -304,7 +314,7 @@
         for (var type in TYPE_INFO) {
           if (TYPE_INFO.hasOwnProperty(type)) {
             for (var i = 0; i < placeObjs.length; i++) {
-              if (shouldShow(placeObjs[i]) && placeObjs[i].type === type) {
+              if (placeObjs[i].type === type) {
                 sortedList.push(placeObjs[i]);
               }
             }
@@ -323,14 +333,12 @@
         });
 
         for (var i = 0; i < sorted.length; i++) {
-          if (shouldShow(sorted[i])) {
-            sortedList.push(sorted[i]);
-          }
+          sortedList.push(sorted[i]);
         }
       } else if (sort === "price") {
         for (var price = 0; price <= 4; price++) {
           for (var i = 0; i < placeObjs.length; i++) {
-            if (shouldShow(placeObjs[i]) && placeObjs[i].price === price) {
+            if (placeObjs[i].price === price) {
               sortedList.push(placeObjs[i]);
             }
           }
