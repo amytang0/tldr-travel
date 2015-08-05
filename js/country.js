@@ -8,40 +8,44 @@
     return nameWithCountry(el.getAttribute(attr));
   }
 
+  blankHrefs();
+
   //update currency if haven't fetched it within the past month
   var $currency = document.getElementById("currency");
-  var currencyName = $currency.getAttribute("data-currency");
+  if ($currency !== null) {
+    var currencyName = $currency.getAttribute("data-currency");
 
-  var lastCurrencyFetchSec = parseInt(localStorage.getItem(currencyName + "Date"), 10);
+    var lastCurrencyFetchSec = parseInt(localStorage.getItem(currencyName + "Date"), 10);
 
-  var now = new Date();
-  var oneMonthFromNow;
+    var now = new Date();
+    var oneMonthFromNow;
 
-  if (now.getMonth() == 11) {
-      oneMonthFromNow = new Date(now.getFullYear() + 1, 0, 1);
-  } else {
-      oneMonthFromNow = new Date(now.getFullYear(), now.getMonth() + 1, 1);
-  }
+    if (now.getMonth() == 11) {
+        oneMonthFromNow = new Date(now.getFullYear() + 1, 0, 1);
+    } else {
+        oneMonthFromNow = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+    }
 
-  if ((oneMonthFromNow / 1000) > lastCurrencyFetchSec) {
-    //get from local storage
-    $currency.innerHTML = localStorage.getItem(currencyName)
-  } else {
-    //fetch from exchange rates api
-    callAjax("https://openexchangerates.org/api/latest.json?app_id=5566c0f060774b049011c229ca72463c",
-      function(data) {
-        var json = JSON.parse(data);
+    if ((oneMonthFromNow / 1000) > lastCurrencyFetchSec) {
+      //get from local storage
+      $currency.innerHTML = localStorage.getItem(currencyName)
+    } else {
+      //fetch from exchange rates api
+      callAjax("https://openexchangerates.org/api/latest.json?app_id=5566c0f060774b049011c229ca72463c",
+        function(data) {
+          var json = JSON.parse(data);
 
-        if (json.rates[currencyName] !== undefined) {
-          var rate = Math.round(json.rates[currencyName] * 100) / 100;
-          $currency.innerHTML = rate;
+          if (json.rates[currencyName] !== undefined) {
+            var rate = Math.round(json.rates[currencyName] * 100) / 100;
+            $currency.innerHTML = rate;
 
-          //set local storage so don't have to request next time
-          localStorage.setItem(currencyName, rate);
-          localStorage.setItem(currencyName + "Date", json.timestamp);
+            //set local storage so don't have to request next time
+            localStorage.setItem(currencyName, rate);
+            localStorage.setItem(currencyName + "Date", json.timestamp);
+          }
         }
-      }
-    );
+      );
+    }
   }
 
   var $map = document.getElementById("map-canvas");

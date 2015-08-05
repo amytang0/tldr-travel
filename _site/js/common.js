@@ -144,3 +144,12 @@ function setParam(key, value) {
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+function blankHrefs() {
+  var main = document.getElementById("main");
+  var as = main.getElementsByTagName("a");
+
+  for (var i = 0; i < as.length; i++) {
+    as[i].setAttribute("target", "_blank");
+  }
+}

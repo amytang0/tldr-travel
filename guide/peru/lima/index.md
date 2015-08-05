@@ -11,9 +11,14 @@ zoom: 12
 
 ---
 
-- __Getting around:__ Taxi or buses. EasyTaxi app helps for hailing taxis. Cost 
-based on quadrants. Buses have written on them which streets they go down.
-- __Eat:__ ceviche, cheap street food
+##Food##
+
+- __Eat:__ ceviche and various street foods. Street food usually just 1-2 soles
+
+##Transportation##
+
+- __Taxi:__ 10-30 soles depending on quadrants. EasyTaxi app helps for hailing
+- __Bus:__ 1-2 soles. Buses have written on them which streets they go down
 
 {::options parse_block_html="true" /}
 

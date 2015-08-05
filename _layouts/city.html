@@ -11,7 +11,7 @@ layout: default
   <a href="/" class="nav-link">Main Menu</a>
   <a href="/guide/{{ page.country | downcase}}" class="nav-link">Back to {{ page.country }}</a>
 </div>
-<div class="main">
+<div class="main" id="main">
   <div class="header">
     <h1 class="title">{{ page.title }}</h1>
     <div class="subtext">
@@ -21,13 +21,11 @@ layout: default
   </div>
 
   <div class="content">
-    <h2>General Info</h2>
-
     {{ content }}
   </div>
 
   <h2>Places Info</h2>
-  <div class="loading" id="loading">Loading...</div>
+  <div class="loading" id="loading">Loading Map...</div>
   <div id="options">
     <p class="desc">Curate the list of suggestions to get a personalized list of just the things you care about.</p>
 

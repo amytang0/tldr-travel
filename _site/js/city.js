@@ -48,6 +48,8 @@
     4: ">$61"
   };
 
+  blankHrefs();
+
   var $map = document.getElementById("map-canvas");
   var $list = document.getElementById("places-list");
 
