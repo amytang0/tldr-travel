@@ -178,8 +178,13 @@
     $listItem.setAttribute("id", placeId(placeObj));
 
     if (placeObj.img !== null) {
+      /*
       var $img = createEl('img', "list-img", $listItem);
       $img.setAttribute("src", placeObj.img);
+      */
+      $listItem.style["background-image"] = "url(" + placeObj.img + ")";
+    } else {
+      $listItem.style["background"] = "linear-gradient(#44728C, #082E43)";
     }
 
     var $info = createEl('div', "info", $listItem);

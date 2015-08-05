@@ -109,11 +109,20 @@ ul li {
 }
 
 .main-description {
-  margin-top: 25px;
+  margin-top: 30px;
 }
 
 .main-description p {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.main-description img {
+  margin: 20px auto;
+  text-align: center;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .subheader {
@@ -141,7 +150,7 @@ ul li {
 
 .guides-list {
   font-size: 18px;
-  padding-bottom: 70px;
+  padding-bottom: 90px;
 }
 
 .loading {
