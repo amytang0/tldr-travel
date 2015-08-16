@@ -61,14 +61,21 @@
   var mapLng = getFloat($map, "data-lng");
   var zoom = getFloat($map, "data-zoom");
 
-  var map = new GMaps({
-    div: '#map-canvas',
-    lat: mapLat,
-    lng: mapLng,
-    zoom: zoom
-  });
+  var map;
 
-  map.map.setOptions({scrollwheel: false});
+  try {
+    map = new GMaps({
+      div: '#map-canvas',
+      lat: mapLat,
+      lng: mapLng,
+      zoom: zoom
+    });
+
+    map.map.setOptions({scrollwheel: false});
+  } catch (err) {
+    console.log(err);
+    map = {};
+  }
 
   function selectItem(el) {
     var prevSelected = $list.getElementsByClassName("selected-item");
@@ -83,7 +90,11 @@
   var listeners = {};
 
   function addMarker(placeObj) {
-    var marker = map.addMarker({
+    if (map.addMarker === undefined) {
+      return;
+    }
+
+    marker = map.addMarker({
       lat: placeObj.lat,
       lng: placeObj.lng,
       icon: pinIcon(TYPE_INFO[placeObj.type].color),
@@ -244,6 +255,20 @@
   var $placesMeta = document.getElementById("places-meta");
   var $places = $placesMeta.getElementsByClassName("place");
 
+  function hideObjsOnInit(i, placeObj) {
+    //if obj is in url hide-list, hide on init
+    var urlParam = getParam("list");
+    var hideList = urlParam.split(",");
+
+    if (hideList.indexOf(i.toString()) !== -1) {
+      placeObj.initOff = true;
+      hide(placeObj.$el());
+    } else {
+      placeObj.initOff = false;
+      addMarker(placeObj);
+    }
+  }
+
   //populate list and markers at beginning
   function initPlaces() {
     for (var i = 0; i < $places.length; i++) {
@@ -261,43 +286,40 @@
           place = $place.getAttribute("data-latlng");
         }
 
-        getLatLong(place, function(lat, lng) {
-          var placeObj = {
-            lat: lat,
-            lng: lng,
-            name: place,
-            type: type,
-            link: link,
-            price: price,
-            content: $place.innerHTML,
-            index: i,
-            img: img,
-            canceled: false,
-            toggledOn: true,
-            favorite: false,
-            $el: function() {
-              return document.getElementById(placeId(this));
-            }
-          };
+        var placeObj = {
+          name: place,
+          type: type,
+          link: link,
+          price: price,
+          content: $place.innerHTML,
+          index: i,
+          img: img,
+          canceled: false,
+          toggledOn: true,
+          favorite: false,
+          $el: function() {
+            return document.getElementById(placeId(this));
+          }
+        };
 
-          //TODO: is there a way to wait for all callbacks to occur, then renderList and repopulateItems instead of having this so tightly coupled?
+        try {
+          getLatLong(place, function(lat, lng) {
+            placeObj.lat = lat;
+            placeObj.lng = lng;
+
+            //TODO: is there a way to wait for all callbacks to occur, then renderList and repopulateItems instead of having this so tightly coupled?
+            addToList(placeObj);
+
+            hideObjsOnInit(i, placeObj);
+            placeObjs.push(placeObj);
+          });
+        } catch (err) {
+          console.log(err);
           addToList(placeObj);
 
-          //if obj is in url hide-list, hide on init
-          var urlParam = getParam("list");
-          var hideList = urlParam.split(",");
-
-          if (hideList.indexOf(i.toString()) !== -1) {
-            placeObj.initOff = true;
-            hide(placeObj.$el());
-          } else {
-            placeObj.initOff = false;
-            addMarker(placeObj);
-          }
-
+          hideObjsOnInit(i, placeObj);
           placeObjs.push(placeObj);
-
-        });
+        }
       })($places[i], i);
     }
   }
@@ -455,4 +477,8 @@
     initOptions();
   }
 
+  if (map.drawRoute === undefined) {
+    show(document.getElementById("map-error"), "inline-block");
+    hide(document.getElementById("map-canvas"));
+  }
 })();

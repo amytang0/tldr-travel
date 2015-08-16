@@ -6,7 +6,7 @@
   display: block;
 }
 
-#map-info {
+#map-info, #map-error {
   display: none;
 }
 
@@ -47,6 +47,10 @@
 
 .guide-link {
   padding: 10px 50px;
+}
+
+#map-error {
+  margin-top: 30px;
 }
 
 

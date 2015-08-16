@@ -1,4 +1,4 @@
-#places-meta {
+#places-meta, #map-error {
   display: none;
 }
 
@@ -10,6 +10,11 @@
 
 #map-canvas {
   width: 60%;
+}
+
+#map-error {
+  padding-top: 30px;
+  vertical-align: top;
 }
 
 #places-list {
