@@ -6,7 +6,7 @@ date: 2015-09-20 00:00:00
 country: "Nicaragua"
 lat: 12.136261
 lng: -86.194315
-zoom: 4
+zoom: 8
 currency: NIO
 
 ---
@@ -74,8 +74,8 @@ Hot and dusty. Flor de Cana rum factory tours nearby. Otherwise, basically only 
 Teeny little fishing village with a population of ~100 people. Close to Padre Ramos Estuary and San Cristobal volcano. Great place to go surfing (low tide good for noobs, high tide good for experts). Highly recommend Rancho Esperanza to stay as they have good food and genuinely help out the community.
 </div>
 
-<div class="city" data-name="Esteli">
-#Esteli#
+<div class="city" data-name="Estelí">
+#Estelí#
 ![Esteli](esteli.jpg)
 Another Sandinista stronghold. Really amazing and/or playful murals all over the city. Known for cowboys and leather goods. Also near Somoto Canyon, a beautiful place to go cliff diving from heights of 3 ft to 20ft.
 </div>
@@ -84,7 +84,6 @@ Another Sandinista stronghold. Really amazing and/or playful murals all over the
 #Matagalpa#
 ![Matagalpa](matagalpa.jpg)
 Known mostly for cacao and coffee farm. Check out El Castillo del Cacao, a chocolate "factory" run by two local women. There's also a decent number of nearby cloudforests and cloudfarms you can hike/stay in.
-![alt text](name.extension)
 </div>
 
 <div class="city" data-name="Isla de Ometepe">
@@ -102,20 +101,23 @@ Boring. Several islands in the middle of Lago de Nicaragua near the Rio San Juan
 Old spanish fort on the Rio San Juan. Has a butterfly reserve and a museum detailing its position as a fort to defend pirates. Good jumping off point to explore the Indio Maiz Reserve.
 </div>
 
-<div class="city" data-name="Los Guatuzos">
+<div class="city" data-name="Refugio de Vida Silvestre Los Guatuzos">
 #Los Guatuzos#
 Village in the middle of the rain forest. Get here with a 8 hr boat from San Carlos. Worth. Stay with Cabanas Caiman. The owner and his wife are super friendly, great food, and lend you bikes to explore the area. Highly recommend the night tour with him. He's an amateur photographer and will position you in the best angles to selfie with crazy dangerous animals.
 </div>
 
-<div class="city" data-name="San Juan Del Sur">
+<div class="city" data-name="San Juan del Sur">
 #San Juan Del Sur#
 Drunk surfer town. Sunday Funday. Has a lot of pretty beaches all along the coast.
 </div>
 
-<div class="city" data-name="Corn Islands">
+<div class="city" data-name="Islas del Maíz">
 #Corn Islands#
 ![cornisland](cornisland.jpg)
 Carribean islands. Good and cheap scuba diving. Speaks primarily English. Good lobster.
+</div>
+
+<div id="routes-meta">
 </div>
 
 </div>
